@@ -27,11 +27,13 @@ either expressed or implied, of the FreeBSD Project.
 '''
 
 #AUTHOR: JORGE WEBSEC
-#Twitter: @JorgeWebsec
-#WEB: www.quantika14.com
-
 import wikipedia, requests, json, re
 from bs4 import BeautifulSoup
+import modules.er as er
+import modules.control as control
+
+#Cabeceras para los requests
+headers = {'User-Agent': 'My User Agent 1.0'}
 
 TAG_RE = re.compile(r'<[^>]+>')
 def remove_tags(text):
@@ -41,21 +43,21 @@ def remove_tags(text):
 def parserLibreborme_json(j):
     print "|----[INFO][CARGOS EN EMPRESAS ACTUALMENTE][>] "
     for cargos_actuales in j["cargos_actuales"]:
-        print "    - Desde: " + cargos_actuales["date_from"] + " hasta la actualidad."
-        print "    - Empresa: " + cargos_actuales["name"]
-        print "    - Cargo: " + cargos_actuales["title"]
+        print u"    - Desde: " + cargos_actuales["date_from"] + " hasta la actualidad."
+        print u"    - Empresa: " + cargos_actuales["name"]
+        print u"    - Cargo: " + cargos_actuales["title"]
 
     print "|----[INFO][CARGOS EN EMPRESAS HISTORICOS][>] "
     for cargos_historicos in j["cargos_historial"]:
-        print "    - Desde: " + cargos_historial["date_from"]
-        print "    - Hasta: " + cargos_historial["date_to"]
-        print "    - Empresa: " + cargos_historial["name"]
-        print "    - Cargo: " + cargos_historial["title"]
+        print u"    - Desde: " + cargos_historicos["date_from"]
+        print u"    - Hasta: " + cargos_historicos["date_to"]
+        print u"    - Empresa: " + cargos_historicos["name"]
+        print u"    - Cargo: " + cargos_historicos["title"]
     
     print "|----[FUENTES][BORME][>] "
     for boe in j["in_bormes"]:
-        print "    - CVE: " + boe["cve"]
-        print "    - URL: " + boe["url"]
+        print u"    - CVE: " + boe["cve"]
+        print u"    - URL: " + boe["url"]
 
 def searchLibreborme(apellidos, nombre):
     URL = "https://libreborme.net/borme/api/v1/persona/" + apellidos.replace(" ", "-") + "-" + nombre.replace(" ", "-") + "/"
@@ -164,7 +166,22 @@ def searchPaginasAmarillas(nombre, a1, a2, loc):
     else:
         pass
 
+#Funciones para buscar en Infojobs
+def searchInfojobs(nombre, a1, a2, loc):
+    global headers
+    url_array = ("https://www.infojobs.net/" + nombre.replace(" ", "-") + "-" + a1.replace(" ", "-") + "-" + a2.replace(" ", "-") + ".prf", "https://www.infojobs.net/" + nombre.replace(" ", "-") + "-" + a1.replace(" ", "-") + ".prf", "https://www.infojobs.net/" + nombre.replace(" ", "-") + "-" + a1.replace(" ", "-") + "-1.prf")
+    for url in url_array:
+        html = requests.get(url, headers=headers).text
+        soup = BeautifulSoup(html, "html.parser")
+        h1s = soup.findAll("h1")
+        for h1 in h1s:
+            if "humano" in h1:
+                print "|----[INFO][INFOJOBS][>] Captcha detectado..."
+                break
+            else:
+                print "|----[INFO][INFOJOBS][>] " + h1
 
+  
 def banner():
     print """
                                                                                                         
@@ -208,23 +225,51 @@ def menu():
     print "| 1. Nombre y apellidos                |"
     print "| 2. Nombre, apellidos y ciudad        |"
     print "|______________________________________|"
+
+    #Comprobamos cuantos archivos hay en Data
+    control.countFiles_data()
+
     m = int(raw_input("Selecciona 1/2: "))
     if m == 1:
-        nombre = raw_input("Por favor indique el nombre: ")
-        apellido1 = raw_input("Por favor indique el primer apellido: ")
-        apellido2 = raw_input("Por favor indique el segundo apellido: ")
+        nombre = raw_input(u"Por favor indique el nombre: ")
+        apellido1 = raw_input(u"Por favor indique el primer apellido: ")
+        apellido2 = raw_input(u"Por favor indique el segundo apellido: ")
+
+        #Limpiamos de acentos
+        nombre = er.replace_acentos(nombre)
+        apellido1 = er.replace_acentos(apellido1)
+        apellido2 = er.replace_acentos(apellido2)
+
+        #Limpiamos de letras raras
+        nombre = er.replace_letras_raras(nombre)
+        apellido1 = er.replace_letras_raras(apellido1)
+        apellido2 = er.replace_letras_raras(apellido2)
+
         target = nombre + " " + apellido1 + " " + apellido2
         apellidos = apellido1 + " " + apellido2
-
+        
         searchWikipedia(target)
         searchLibreborme(apellidos, nombre)
         searchYoutube(target)
 
     if m == 2:
-        nombre = raw_input("Por favor indique el nombre: ")
-        apellido1 = raw_input("Por favor indique el primer apellido: ")
-        apellido2 = raw_input("Por favor indique el segundo apellido: ")
-        loc = raw_input("Por favor indique la ciudad: ")
+        nombre = raw_input(u"Por favor indique el nombre: ")
+        apellido1 = raw_input(u"Por favor indique el primer apellido: ")
+        apellido2 = raw_input(u"Por favor indique el segundo apellido: ")
+        loc = raw_input(u"Por favor indique la ciudad: ")
+
+        #Limpiamos de acentos
+        nombre = er.replace_acentos(nombre)
+        apellido1 = er.replace_acentos(apellido1)
+        apellido2 = er.replace_acentos(apellido2)
+        loc = er.replace_acentos(loc)
+
+        #Limpiamos de letras raras
+        nombre = er.replace_letras_raras(nombre)
+        apellido1 = er.replace_letras_raras(apellido1)
+        apellido2 = er.replace_letras_raras(apellido2)
+        loc = er.replace_letras_raras(loc)
+
         target = nombre + " " + apellido1 + " " + apellido2
         apellidos = apellido1 + " " + apellido2
         
@@ -232,6 +277,7 @@ def menu():
         searchLibreborme(apellidos, nombre)
         searchYoutube(target)
         searchPaginasAmarillas(nombre, apellido1, apellido2, loc)
+        searchInfojobs(nombre, apellido1, apellido2, loc)
 
 def main():
     banner()
