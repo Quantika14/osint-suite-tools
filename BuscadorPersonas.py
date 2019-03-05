@@ -31,6 +31,7 @@ import wikipedia, requests, json, re
 from bs4 import BeautifulSoup
 import modules.er as er
 import modules.control as control
+import modules.bing as searchBing
 
 #Cabeceras para los requests
 headers = {'User-Agent': 'My User Agent 1.0'}
@@ -181,7 +182,14 @@ def searchInfojobs(nombre, a1, a2, loc):
             else:
                 print "|----[INFO][INFOJOBS][>] " + h1
 
-  
+def search_bing_(target):
+    urls = searchBing.search_Bing(target)
+    for url in urls:
+        try:
+            print "[|----[INFO][BING][>] " + str(url)
+        except:
+            pass
+
 def banner():
     print """
                                                                                                         
@@ -248,9 +256,10 @@ def menu():
         target = nombre + " " + apellido1 + " " + apellido2
         apellidos = apellido1 + " " + apellido2
         
-        searchWikipedia(target)
-        searchLibreborme(apellidos, nombre)
-        searchYoutube(target)
+        #searchWikipedia(target)
+        #searchLibreborme(apellidos, nombre)
+        #searchYoutube(target)
+        search_bing_(target)
 
     if m == 2:
         nombre = raw_input(u"Por favor indique el nombre: ")
