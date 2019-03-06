@@ -23,16 +23,18 @@ Repositorio de difentes herramientas (buscadores, crawlers, bots, etc) para hace
   
 # ¿Cómo funciona?
 
-1. Compatible con Windows y Linux
+1. Para su funcionamiento 100% usar sistemas Linux o Mac
 1. Tener instalado Python 2.7
+1. Instalar PDFGREP ```sudo apt-get install pdfgrep```
 1. Instalar las dependencias ``` pip install -r requeriments.txt```
-1. Para ejecutar cualquier buscador solo tendremos que hacer ```python BuscadorXXXXXX.py```
+1. Para ejecutar cualquier buscador solo tendremos que hacer por ej: ```python BuscadorPersonas.py```
 1. Seleccionar las diferentes configuraciones e insertar los datos que nos pida
 1. Enjoy!
 
 ## Requisitos
 
 1. Tener instalado Python 2.7
+1. Tener instalado PDFGREP
 1. Tener instalado las librerias descritas en requeriments.txt
 
 # Autor
