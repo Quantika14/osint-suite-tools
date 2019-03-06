@@ -260,15 +260,15 @@ def menu():
         target = nombre + " " + apellido1 + " " + apellido2
         apellidos = apellido1 + " " + apellido2
         
-        #searchWikipedia(target)
-        #searchLibreborme(apellidos, nombre)
-        #searchYoutube(target)
-        #search_bing_(target)
-        #Buscamos en local
+        searchWikipedia(target)
+        searchLibreborme(apellidos, nombre)
+        searchYoutube(target)
+        search_bing_(target)
+        Buscamos en local
         print ""
         print "[--------------------------------------------------]"
         print ""
-        findData_local.search_and_find_data("VOX")
+        findData_local.search_and_find_data(nombre, apellido1, apellido2)
 
     if m == 2:
         nombre = raw_input(u"Por favor indique el nombre: ")
@@ -296,6 +296,10 @@ def menu():
         searchYoutube(target)
         searchPaginasAmarillas(nombre, apellido1, apellido2, loc)
         searchInfojobs(nombre, apellido1, apellido2, loc)
+        print ""
+        print "[--------------------------------------------------]"
+        print ""
+        findData_local.search_and_find_data(nombre, apellido1, apellido2)
 
 def main():
     banner()
