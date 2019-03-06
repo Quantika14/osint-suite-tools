@@ -1,31 +1,36 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*
 
-import subprocess
-from os import listdir
-from PyPDF2 import PdfFileReader
+import modules.control as control
+import os
 
-#Funcion para realizar comandos en Windows
-def cmd(commando):
-    subprocess.run(commando, shell=True)
+def search_and_find_data(n, ap1, ap2):
+    if "win" in control.systemDetect():
+        print "[!][WARNING][>] Esta funcionalidad solo está disponible en Linux..."
+    if "linux" in control.systemDetect():
 
-def search_and_find_data(target):
-    f = open("data\/arbol.txt", "r")
-    for l in f.readlines():
-        text_extractor(l, target)
 
-def text_extractor(path, target):
-    
+        #Buscamos los dos apellidos en minusculas
+        print "|----[INFO][ARCHIVOS][DATA LOCAL][>] Apellidos en minus..."
+        command1 = "pdfgrep '" + ap1.lower() + " " + ap2.lower() + "' -R"
+        exe_find = os.system(command1)
+        print exe_find
 
-    for p in listdir(path):
+        #Buscamos los dos apellidos y el nombre en minusculas
+        print "|----[INFO][ARCHIVOS][DATA LOCAL][>] Apellidos y nombre en minus..."
+        command2 = "pdfgrep '" + ap1.lower() + " " + ap2.lower() + " " + n.lower() + "' -R"
+        exe_find = os.system(command2)
+        print exe_find
 
-        with open(p, 'rb') as f:
-            pdf = PdfFileReader(f)
-    
-            number_of_pages = pdf.getNumPages()
-            for i in range(1,number_of_pages):
-                page = pdf.getPage(i)
-                text = page.extractText()
-                if target.upper() in text.upper():
+        #Buscamos los dos apellidos en mayusculas
+        print "|----[INFO][ARCHIVOS][DATA LOCAL][>] Apellidos en Mayus"
+        command1 = "pdfgrep '" + ap1.upper() + " " + ap2.upper() + "' -R"
+        exe_find = os.system(command1)
+        print exe_find
 
-                    print path
+        #Buscamos los dos apellidos y el nombre en mayusculas
+        print "|----[INFO][ARCHIVOS][DATA LOCAL][>] Apellidos y nombre en Mayus"
+        command2 = "pdfgrep '" + ap1.upper() + " " + ap2.upper() + " " + n.upper() + "' -R"
+        exe_find = os.system(command2)
+        print exe_find
+
