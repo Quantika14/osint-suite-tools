@@ -32,6 +32,8 @@ from bs4 import BeautifulSoup
 import modules.er as er
 import modules.control as control
 import modules.bing as searchBing
+import modules.parsers as parser
+import modules.findData as findData_local
 
 #Cabeceras para los requests
 headers = {'User-Agent': 'My User Agent 1.0'}
@@ -50,7 +52,10 @@ def parserLibreborme_json(j):
 
     print "|----[INFO][CARGOS EN EMPRESAS HISTORICOS][>] "
     for cargos_historicos in j["cargos_historial"]:
-        print u"    - Desde: " + cargos_historicos["date_from"]
+        try:
+            print u"    - Desde: " + cargos_historicos["date_from"]
+        except:
+            pass
         print u"    - Hasta: " + cargos_historicos["date_to"]
         print u"    - Empresa: " + cargos_historicos["name"]
         print u"    - Cargo: " + cargos_historicos["title"]
@@ -63,15 +68,14 @@ def parserLibreborme_json(j):
 def searchLibreborme(apellidos, nombre):
     URL = "https://libreborme.net/borme/api/v1/persona/" + apellidos.replace(" ", "-") + "-" + nombre.replace(" ", "-") + "/"
     html = requests.get(URL)
-    if html > 10:
-        try:
-            
-            j = json.loads(html.text)
-            parserLibreborme_json(j)
+    html_text = html.text
+
+    if len(html_text)>1:
+ 
+        j = json.loads(html.text)
+        parserLibreborme_json(j)
         
-        except:
-            print "[!][WARNING][LIBREBORME][>] Error con la API..."
-    elif html < 10:
+    else:
         URL = "https://libreborme.net/borme/api/v1/persona/" + nombre.replace(" ", "-") + "-" + apellidos.replace(" ", "-") + "/"
         html = requests.get(URL)
         try:
@@ -79,9 +83,7 @@ def searchLibreborme(apellidos, nombre):
             parserLibreborme_json(j)
 
         except:
-            print "[!][WARNING][LIBREBORME][>] Error con la API..."
-    else:
-        print "|----[INFO][EMPRESAS][>] No aparecen resultados en el BORME."
+            print "|----[INFO][EMPRESAS][>] No aparecen resultados en el BORME."
 
 #Funciones para buscar en Wikipedia
 def searchWikipedia(target):
@@ -187,6 +189,8 @@ def search_bing_(target):
     for url in urls:
         try:
             print "[|----[INFO][BING][>] " + str(url)
+            print parser.parser_email(requests.get(url).text)
+            print parser.parser_n_tlfn(requests.get(url).text)
         except:
             pass
 
@@ -259,7 +263,12 @@ def menu():
         #searchWikipedia(target)
         #searchLibreborme(apellidos, nombre)
         #searchYoutube(target)
-        search_bing_(target)
+        #search_bing_(target)
+        #Buscamos en local
+        print ""
+        print "[--------------------------------------------------]"
+        print ""
+        findData_local.search_and_find_data("VOX")
 
     if m == 2:
         nombre = raw_input(u"Por favor indique el nombre: ")
