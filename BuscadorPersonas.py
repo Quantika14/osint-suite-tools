@@ -35,6 +35,7 @@ import modules.bing as searchBing
 import modules.parsers as parser
 import modules.findData as findData_local
 
+
 #Cabeceras para los requests
 headers = {'User-Agent': 'My User Agent 1.0'}
 
@@ -50,6 +51,11 @@ def parserLibreborme_json(j):
         print u"    - Empresa: " + cargos_actuales["name"]
         print u"    - Cargo: " + cargos_actuales["title"]
 
+        if cargos_actuales["name"]:
+
+            print "|----[INFO][LOCAL DATA][Adjudicaciones][>] Este proceso puede tardar..."
+            findData_local.search_adjudicaciones(cargos_actuales["name"])
+
     print "|----[INFO][CARGOS EN EMPRESAS HISTORICOS][>] "
     for cargos_historicos in j["cargos_historial"]:
         try:
@@ -59,6 +65,11 @@ def parserLibreborme_json(j):
         print u"    - Hasta: " + cargos_historicos["date_to"]
         print u"    - Empresa: " + cargos_historicos["name"]
         print u"    - Cargo: " + cargos_historicos["title"]
+        
+        if cargos_historicos["name"]:
+            
+            print "|----[INFO][LOCAL DATA][Adjudicaciones][>] Este proceso puede tardar..."
+            findData_local.search_adjudicaciones(cargos_historicos["name"])
     
     print "|----[FUENTES][BORME][>] "
     for boe in j["in_bormes"]:
@@ -182,7 +193,7 @@ def searchInfojobs(nombre, a1, a2, loc):
                 print "|----[INFO][INFOJOBS][>] Captcha detectado..."
                 break
             else:
-                print "|----[INFO][INFOJOBS][>] " + h1
+                print "|----[INFO][INFOJOBS][>] " + str(h1)
 
 def search_bing_(target):
     urls = searchBing.search_Bing(target)
@@ -238,9 +249,6 @@ def menu():
     print "| 2. Nombre, apellidos y ciudad        |"
     print "|______________________________________|"
 
-    #Comprobamos cuantos archivos hay en Data
-    control.countFiles_data()
-
     m = int(raw_input("Selecciona 1/2: "))
     if m == 1:
         nombre = raw_input(u"Por favor indique el nombre: ")
@@ -264,7 +272,7 @@ def menu():
         searchLibreborme(apellidos, nombre)
         searchYoutube(target)
         search_bing_(target)
-        Buscamos en local
+
         print ""
         print "[--------------------------------------------------]"
         print ""
@@ -300,6 +308,7 @@ def menu():
         print "[--------------------------------------------------]"
         print ""
         findData_local.search_and_find_data(nombre, apellido1, apellido2)
+
 
 def main():
     banner()

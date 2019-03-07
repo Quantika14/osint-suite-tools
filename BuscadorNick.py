@@ -190,13 +190,13 @@ def banner():
       `.hh  .ys`        .hs          /y/ +d-`     
        -yd-  +hs.  ./ ``+dd-   -   `odo` yh:`     
        `.hy  `ohh/../-syyddss+-o ./yds. -d+`      
-         :d+  `oydhs/-shhddhy+-:ohdhs. `ys`       OSINT PARA TODOS
-          +h:-``ohdmmmmmmmmmmdddmmhs.`.+y.        
-           /hdhsyhdddmmNNmmmmmmhyyyyshhy.         
-            -/oyhydmmmmmdmmdyyhyyhyyyo/.               Y
-               `.yhddmmdymdhoyddhys`              
-           `.:+sydyhddddhdddhhhdysyo+/.`                   INVESTIGA
-       `.:+o+:.:dmmdmmmmmmmmddmddddd:-+o+-`                     CONMIGO
+         :d+  `oydhs/-shhddhy+-:ohdhs. `ys`       OSINT
+          +h:-``ohdmmmmmmmmmmdddmmhs.`.+y.           PARA
+           /hdhsyhdddmmNNmmmmmmhyyyyshhy.              TODOS
+            -/oyhydmmmmmdmmdyyhyyhyyyo/.                 E
+               `.yhddmmdymdhoyddhys`                       INVESTIGA
+           `.:+sydyhddddhdddhhhdysyo+/.`                     CONMIGO
+       `.:+o+:.:dmmdmmmmmmmmddmddddd:-+o+-` 
      -+oo:.`   +dmmmmdmmmmmmmmssdmhy/  `-/++:`    
    .+:.`.     `shmmNdo/ymmmmmy/+shsyo     .::/`   
   :+`         -sydmmhs-/mmhmy+/+sdhso`       -+`  
