@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*
 
 import modules.control as control
+import modules.config as config
 import os
 from subprocess import call
 
@@ -44,4 +45,18 @@ def search_adjudicaciones(empresa):
     print "|----[INFO][>] Buscando la empresa " + empresa + " en data..."
     os.system("pdfgrep '" + empresa + "' -ni data/Adjudicaciones/ -r")
 
+def search_investigados_condenados_politicosSpain(nombre, apellido1):
+    #Limpiamos lso datos de entrada
+    nombre = nombre.lower().strip()
+    apellido1 = apellido1.lower().strip().replace("\n", "")
 
+
+    #Buscamos si aparece en la lista de corruptos politicos
+    f = open(config.politicosSpain_investigados, "r")
+    for line in f.readlines():
+
+        if nombre.lower() in line.lower() and apellido1.lower() in line.lower():
+            print "|----[INFO][>] Se ha encontrado en la lista de investigados o condenados políticos: "
+            print "|--------[DATA][>] " + str(line)
+            print "|--------[FUENTE][>] https://es.wikipedia.org/wiki/Anexo:Pol%C3%ADticos_de_Espa%C3%B1a_implicados_en_casos_judiciales"
+    f.close()
