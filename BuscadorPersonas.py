@@ -34,6 +34,7 @@ import modules.control as control
 import modules.bing as searchBing
 import modules.parsers as parser
 import modules.findData as findData_local
+import modules.config as config
 
 
 #Cabeceras para los requests
@@ -77,24 +78,27 @@ def parserLibreborme_json(j):
         print u"    - URL: " + boe["url"]
 
 def searchLibreborme(apellidos, nombre):
-    URL = "https://libreborme.net/borme/api/v1/persona/" + apellidos.replace(" ", "-") + "-" + nombre.replace(" ", "-") + "/"
-    html = requests.get(URL)
-    html_text = html.text
-
-    if len(html_text)>1:
- 
-        j = json.loads(html.text)
-        parserLibreborme_json(j)
-        
-    else:
-        URL = "https://libreborme.net/borme/api/v1/persona/" + nombre.replace(" ", "-") + "-" + apellidos.replace(" ", "-") + "/"
+    try:
+        URL = "https://libreborme.net/borme/api/v1/persona/" + apellidos.replace(" ", "-") + "-" + nombre.replace(" ", "-") + "/"
         html = requests.get(URL)
-        try:
+        html_text = html.text
+
+        if len(html_text)>1:
+    
             j = json.loads(html.text)
             parserLibreborme_json(j)
+            
+        else:
+            URL = "https://libreborme.net/borme/api/v1/persona/" + nombre.replace(" ", "-") + "-" + apellidos.replace(" ", "-") + "/"
+            html = requests.get(URL)
+            try:
+                j = json.loads(html.text)
+                parserLibreborme_json(j)
 
-        except:
-            print "|----[INFO][EMPRESAS][>] No aparecen resultados en el BORME."
+            except:
+                print "|----[INFO][EMPRESAS][>] No aparecen resultados en el BORME."
+    except:
+        print "|----[INFO][EMPRESAS][>] No aparecen resultados en el BORME."
 
 #Funciones para buscar en Wikipedia
 def searchWikipedia(target):
@@ -244,45 +248,53 @@ def menu():
     print "Dante's Gates Minimal Version es un buscador inteligente para hacer OSINT de forma automática."
     print "Toda la información es siempre de fuentes abiertas y siempre se dará la dirección de las fuentes"
     print ""
-    print "________________________________________"
-    print "| 1. Nombre y apellidos                |"
-    print "| 2. Nombre, apellidos y ciudad        |"
-    print "|______________________________________|"
+    print "__________________________________________________"
+    print "| 1. Nombre y apellidos                          |"
+    print "| 2. Nombre, apellidos y ciudad                  |"
+    print "| 3. Buscar nombres y apellidos de una lista     |"
+    print "|________________________________________________|"
 
-    m = int(raw_input("Selecciona 1/2: "))
+    m = int(raw_input("Selecciona 1/2/3: "))
     if m == 1:
+        #Datos de entrada sin limpiar tildes y simbolos
         nombre = raw_input(u"Por favor indique el nombre: ")
         apellido1 = raw_input(u"Por favor indique el primer apellido: ")
         apellido2 = raw_input(u"Por favor indique el segundo apellido: ")
 
+        #Buscamos si aparece en la lista de politicos investigados o condenados
+        findData_local.search_investigados_condenados_politicosSpain(nombre, apellido1)
+
         #Limpiamos de acentos
-        nombre = er.replace_acentos(nombre)
-        apellido1 = er.replace_acentos(apellido1)
-        apellido2 = er.replace_acentos(apellido2)
+        nombre_ = er.replace_acentos(nombre)
+        apellido1_ = er.replace_acentos(apellido1)
+        apellido2_ = er.replace_acentos(apellido2)
 
         #Limpiamos de letras raras
-        nombre = er.replace_letras_raras(nombre)
-        apellido1 = er.replace_letras_raras(apellido1)
-        apellido2 = er.replace_letras_raras(apellido2)
+        nombre_ = er.replace_letras_raras(nombre_)
+        apellido1_ = er.replace_letras_raras(apellido1_)
+        apellido2_ = er.replace_letras_raras(apellido2_)
 
-        target = nombre + " " + apellido1 + " " + apellido2
-        apellidos = apellido1 + " " + apellido2
+        target = nombre_ + " " + apellido1_ + " " + apellido2_
+        apellidos_ = apellido1_ + " " + apellido2_
         
         searchWikipedia(target)
-        searchLibreborme(apellidos, nombre)
+        searchLibreborme(apellidos_, nombre_)
         searchYoutube(target)
         search_bing_(target)
 
         print ""
         print "[--------------------------------------------------]"
         print ""
-        findData_local.search_and_find_data(nombre, apellido1, apellido2)
+        findData_local.search_and_find_data(nombre_, apellido1_, apellido2_)
 
     if m == 2:
         nombre = raw_input(u"Por favor indique el nombre: ")
         apellido1 = raw_input(u"Por favor indique el primer apellido: ")
         apellido2 = raw_input(u"Por favor indique el segundo apellido: ")
         loc = raw_input(u"Por favor indique la ciudad: ")
+
+        #Buscamos si aparece en la lista de politicos investigados o condenados
+        findData_local.search_investigados_condenados_politicosSpain(nombre, apellido1)
 
         #Limpiamos de acentos
         nombre = er.replace_acentos(nombre)
@@ -309,10 +321,28 @@ def menu():
         print ""
         findData_local.search_and_find_data(nombre, apellido1, apellido2)
 
+    if m == 3:
+        print "[INFO][LISTA DE NOMBRES Y APELLIDOS][>] Por defecto es 'targets.txt'..."
+        print "[INFO][LISTA DE NOMBRES Y APELLIDOS][>] Si quieres cambiar el archivo, puedes hacerlo en modules/config.py"
+        file_ = open(config.target_list, 'r')
+        for target in file_.readlines():
+            
+			
+            target_ = target.split("||")
+            nombre = target_[0]
+            apellido1 = target_[1]
+            print "[TARGET][>] " + nombre + " " + apellido1
+
+            #Buscamos si aparece en la lista de politicos investigados o condenados
+            findData_local.search_investigados_condenados_politicosSpain(str(nombre), str(apellido1))
+
+            #Buscamos en el BORME
+            searchLibreborme(apellido1, nombre)
+        file_.close()
 
 def main():
     banner()
     menu()
     
-
-main()
+if __name__ == "__main__":
+    main()
