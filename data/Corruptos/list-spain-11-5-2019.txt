@@ -1,0 +1,310 @@
+CCAA 	Nombre 	Vinculado al Partido 	Cargos ejercidos 	Caso 	Grado de implicación 	Ingresó en prisión
+Nacional 	Álvaro Lapuerta 	PP 	Tesorero del PP (2003-2008) 	Gürtel 	Imputado 	No
+Nacional 	Ángel Acebes 	PP 	Ministro de Administraciones Públicas
+(1999-2000);
+Ministro de Justicia (2000-2002); Ministro de Interior (2002-2004) y Secretario general del Partido Popular (2004-2008). Abandonó su escaño para poder entrar en la entidad bancaria 	Bankia 	Imputado 	No
+Nacional 	Ángel Sanchís 	PP 	Tesorero del Partido Popular (1982-1987) 	Gürtel 	Imputado 	No
+Nacional 	Cristóbal Páez Vicedo 	PP 	Gerente del Partido Popular 	Gürtel 	Imputado 	No
+Nacional 	Jesús Merino Delgado 	PP 	Diputado del Congreso 	Gürtel 	Imputado 	No
+Valencia 	Rita Barberá 	PP 	Alcaldesa de Valencia (1991-2015) y Senadora (2015-2016) Fallecida en 2016 	Taula 	Imputada 	No
+Nacional 	Juan Carlos Bárcenas Gutiérrez 	PP 	Asesor GPP Senado y hermano de Luis Bárcenas 	Gürtel 	Imputado 	No
+Nacional 	Luis Bárcenas 	PP 	Tesorero del Partido Popular 	Gürtel 	Imputado 	Preventiva
+Nacional 	Pablo Crespo 	PP 	Empresario y diputado por la circunscripción de Pontevedra 	Gürtel 	Imputado 	Preventiva
+Nacional 	Rodrigo Rato 	PP 	Vicepresidente del Gobierno y presidente de Bankia 	Bankia 	Imputado 	Si
+Andalucía 	Gabriel Amat 	PP 	Alcalde de Roquetas de Mar, presidente del PP de Almería y de la diputación 	Fabriquilla 	Imputado 	No
+Andalucía 	Gregorio Guerra 	PP 	Concejal de Urbanismo 	Troya 	Condenado 	No
+Andalucía 	Juan Martín Serón 	PP 	Alcalde de Alhaurín 	Troya 	Condenado 	No
+Baleares 	Aina Castillo 	PP 	Consejera de Salud 	Over Marketing 	Imputado 	No
+Baleares 	Antònia Ordinas 	PP 	Director y Gerente del Consorcio para el Desarrollo Económico de las Islas Baleares 	Scala 	Condenado 	Sí
+Baleares 	Damián Amengual 	PP 	Gerente del consorcio Turisme Jove 	Turisme Jove 	Condenado 	
+Baleares 	Damián Vidal 	PP 	Director Gerente de la empresa pública del Govern Bitel 	Bitel 	Condenado 	Sí
+Baleares 	Eugenio Hidalgo 	PP 	Alcalde de Andratx 	Andratx 	Condenado 	Sí
+Baleares 	Fernando Areal 	PP 	Gerente del PP balear y cuñado de Jaume Matas 	Palma Arena 	Imputado 	No
+Baleares 	Jaume Massot 	PP 	Director general de Ordenación del Territorio del Govern Matas 	Andratx 	Condenado 	Sí
+Baleares 	Jaume Matas 	PP 	Presidente de Baleares 	Palma Arena 	Condenado 	Sí
+Baleares 	Joan Pol 	PP 	Director general de Emergencias 	Bomsai 	Imputado 	No
+Baleares 	José Luis 'Pepote' Ballester 	PP 	Director general de Deportes 	Nóos 	Imputado 	No
+Baleares 	José María Rodríguez 	PP 	Consejero de Interior, delegado del Gobierno, presidente de la Junta Municipal de Palma 	Over Marketing 	Imputado 	No
+Baleares 	Josep Juan Cardona 	PP 	Consejero de Comercio, Industria y Energía de Baleares 	Scala 	Condenado 	Sí
+Baleares 	Juan Carlos Alía 	PP 	Director gerente del Instituto Balear de Turismo (Ibatur) 	Nóos 	Imputado 	No
+Baleares 	Juan Francisco Gálvez 	PP 	Director general de Juventud 	Turisme Jove 	Condenado 	
+Baleares 	Juan Francisco Gosálbez 	PP 	Jefe de servicios de Turisme Jove 	Turisme Jove 	Condenado 	
+Baleares 	Kurt Viaene 	PP 	Director general de Promoción industrial del Gobierno balear 	Scala 	Condenado 	Sí
+Baleares 	Lluís Ramis de Ayreflor 	PP 	Consejero de Economía y Hacienda en el Gobierno de Jaume Matas 	Bomsai 	Imputado 	No
+Baleares 	Miquel Angel Bonet 	PP 	Secretario y asesor jurídico del Instituto Balear de Turismo (Ibatur) 	Ibatur 	Condenado 	No
+Baleares 	Pere Rotger 	PP 	Presidente del Parlamento balear 	Over Marketing 	Imputado 	No
+Baleares 	Rafael Durán (político) 	PP 	Portavoz del PP en el Ayuntamiento de Palma 	Palma Arena 	Imputado 	No
+Baleares 	Rodrigo de Santos 	PP 	Concejal de urbanismo del Ayuntamiento de Palma 	De Santos 	Condenado 	Sí
+Canarias 	Carmelo Julián Oliva Bethencourt 	PP 	Concejal de Hacienda 	Faycán 	Imputado 	No
+Canarias 	Francisco Gordillo Suárez 	PP 	Asesor de María Antonia Torres 	Faycán 	Imputado 	No
+Canarias 	Francisco Valido 	PP 	Alcalde de Telde 	Faycán 	Imputado 	No
+Canarias 	Guadalupe López Pérez 	PP 	Concejal de Fiestas 	Faycán 	Imputado 	No
+Canarias 	Inmaculada Acosta 	PP 	Director de la Escuela de Servicios Sanitario y Sociales del Gobierno de Canarias (Essscan) 	Catis 	Imputado 	No
+Canarias 	José Luis Mena 	PP 	Jefe de la oficina de Urbanismo 	Faycán 	Imputado 	No
+Canarias 	José Luis Sánchez González 	PP 	Asesor de María del Carmen Castellano, gerente de la Sociedad de Desarrollo y Promoción de Telde 	Faycán 	Imputado 	No
+Canarias 	José Suárez Martel 	PP 	Concejal de Depósitos, Aguas, Saneamientos, Agricultura, Ganadería y Pesca 	Faycán 	Imputado 	No
+Canarias 	María del Carmen Castellano 	PP 	Concejal de Desarrollo local y presidenta del PP en Telde, actualmente Alcaldesa de Telde 	Faycán 	Imputado 	No
+Canarias 	María Rosa de Haro 	PP 	Director de la Escuela de Servicios Sanitario y Sociales del Gobierno de Canarias (Essscan), en 2011 va como tercera en la lista para el Congreso por el PP 	Catis 	Imputado 	No
+Castilla La Mancha 	José Manuel Molina 	PP 	Alcalde de Toledo 	Bárcenas 	Imputado 	No
+Castilla La Mancha 	José Ángel Cañas 	PP 	Gerente del PP de Castilla-La Mancha 	Bárcenas 	Imputado 	No
+Castilla y León 	Marcos Martínez 	PP 	Presidente de la Diputación de León y Alcalde de Cuadros 	Púnica 	Imputado 	Preventiva
+Cataluña 	Jordi Soriano 	PP 	Concejal de Sabadell 	Mercurio 	Imputado 	No
+Ceuta 	Yolanda Bel 	PP 	Consejera de Presidencia, Gobernación y Empleo 	Kibesan 	Imputado 	No
+Comunidad Valenciana 	Adolfo Polo 	PP 	Jefe del Área Medioambiental de Emarsa 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	Alexandre Català 	PP 	Subsecretario de la Consejería de Solidaridad 	Cooperación 	Condenado 	No
+Comunidad Valenciana 	Alicia De Miguel 	PP 	Consejero de Bienestar Social de la Generalitat Valenciana 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Álvaro Pérez 'El Bigotes' 	PP 	Gerente de Orange Market 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Ana María Grau Ábalos 	PP 	Coordinadora de ferias de la Agencia Valenciana de Turismo (AVT) 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Angélica Such 	PP 	Consejera de Turismo, diputada autonómica 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Antonio Botella 	PP 	Abogado y primer teniente alcalde de Moncada 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	Carlos Fabra 	PP 	Presidente de la Diputación de Castellón (1995-2011) y del PP de Castellón (-2012) 	Fabra 	Condenado 	No
+Comunidad Valenciana 	Cristina Ibáñez 	PP 	Gerente del PP valenciano 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Daniel Calzada 	PP 	Asesor de la mercantil Llar Calzada 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	David Serra Cervera 	PP 	Vicesecretario de Organización del PP de la Comunidad Valenciana, secretario autonómico de Deportes, diputado autonómico 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Dora Ibars 	PP 	Director general de Promoción Institucional de la Generalitat 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Elisa Maldonado 	PP 	Director de operaciones de la Ciudad de las Artes y las Ciencias (CACSA) 	Nóos 	Imputado 	No
+Comunidad Valenciana 	Enrique Arnal 	PP 	Director financiero de Emarsa 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	Enrique Crespo 	PP 	Presidente de Emarsa. Alcalde de Manises y vicepresidente de la Diputación de Valencia 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	Enrique Ortiz 	PP 	Constructor de Alicante 	Rabasa 	Imputado 	No
+Comunidad Valenciana 	Esteban Cuesta 	PP 	Gerente de la depuradora EMARSA 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	Genoveva Reig 	PP 	Director general de Televisión Valenciana (TVV) con Eduardo Zaplana (1998-2004) 	Brugal 	Imputado 	No
+Comunidad Valenciana 	Ignacio Bernácer 	PP 	Directivo de la Empresa Pública de Saneamiento (Epsar) 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	Ignacio Martínez Maiques 	PP 	Jefe de Compras de Epsar 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	Inmaculada García Pardo 	PP 	Directora General Infraestructuras de la Generalitat y directora del Sepiva, sociedad pública promotora de suelo industrial 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Joaquín Fernando Tomás 	PP 	Asesor jurídico de la sociedad pública Vaersa 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Joaquín Ripoll 	PP 	Presidente de la Diputación Provincial de Alicante (2003-2011), presidente de la Autoridad Portuaria de Alicante (2011- ) 	Brugal 	Imputado 	No
+Comunidad Valenciana 	Jorge Guarro Monllor 	PP 	Jefe del servicio de Promoción de la Agencia Valenciana de Turismo 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Jorge Vela 	PP 	Director de la Ciudad de las Artes y las Ciencias (CACSA) 	Nóos 	Imputado 	No
+Comunidad Valenciana 	José Juan Morenilla 	PP 	Gerente de la Empresa Pública de Saneamiento (Epsar) 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	José López Jaraba 	PP 	Director general del grupo de Radio Televisión valenciana (RTVV) 	RTVV 	Imputado 	No
+Comunidad Valenciana 	José Manuel Aguilar 	PP 	Director de la Ciudad de las Artes y las Ciencias (CACSA) 	Nóos 	Imputado 	No
+Comunidad Valenciana 	José Manuel Medina 	PP 	Alcalde de Orihuela 	Brugal 	Imputado 	No
+Comunidad Valenciana 	José Manuel Vidal Vidal 	PP 	Alto cargo en varias consejerías de la Generalitat Valenciana 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	José Ramón Cuesta 	PP 	Hermano de Esteban Cuesta y dueño de la empresa Exae 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	Josep María Felip 	PP 	Director general de la Conselleria de Solidaridad 	Cooperación 	Condenado 	No
+Comunidad Valenciana 	Juan Bover Fernández de Palencia 	PP 	Jefe de servicio de Infraestructuras Turísticas de la Generalitat 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Juan Carlos Gimeno 	PP 	Encargado de gestión ambiental de Emarsa y posteriormente administrador de Área Este y CRM Adecua 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	Juan José Morenilla 	PP 	Directivo de la Empresa Pública de Saneamiento (Epsar) 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	Juan Miguel Bellver 	PP 	Director general de Vaersa 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Leonor Moreno 	PP 	Abogada de Emarsa 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	Lola Johnson 	PP 	Director de Televisión Valenciana (2009), Consejero de Turismo, Cultura y Deporte de la Generalitat Valenciana (2011-2012), portavoz del Consejo de la Generalitat valenciana (2011-2012) 	RTVV 	Imputado 	No
+Comunidad Valenciana 	Luis Díaz Alperi 	PP 	Alcalde de Alicante (1995-2008) 	Brugal 	Imputado 	No
+Comunidad Valenciana 	Luis Fernando Cartagena 	PP 	Alcalde de Orihuela (1987-1997), consejero de Obras Públicas de la Generalitat Valenciana (1995-1999) 	Carmelitas 	Condenado 	Sí
+Comunidad Valenciana 	Luis Lobón 	PP 	Secretario autonómico de Turismo y Proyectos Estratégicos de la Generalitat Valenciana 	Nóos 	Imputado 	No
+Comunidad Valenciana 	Luis Redondo 	PP 	Director general de Televisión Valenciana (TVV) 	RTVV 	Imputado 	No
+Comunidad Valenciana 	Luis Rosado Bretón 	PP 	Director general de la Agencia Valenciana de Salud 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Manuel Cervera Taulet 	PP 	Consejero de Sanidad de la Generalitat Valenciana y diputado del PP 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Marc Llinares 	PP 	Jefe del área de cooperación 	Cooperación 	Condenado 	No
+Comunidad Valenciana 	María Amparo Fernández 	PP 	Ex esposa de Carlos Fabra con la que estuvo casado entre 1972 y 2011 	Fabra 	Condenado 	No
+Comunidad Valenciana 	María Auxiliadora Hernández Miñana 	PP 	Director del Instituto de Evaluación y Calidad Educativa y Secretario autonómica de Educación 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	María de la Paz Aviñó Primo 	PP 	Secretario general de la Consejería de Agricultura y alto cargo de Sanidad 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Milagrosa Martínez 	PP 	Consejero de Turismo, diputada autonómica, alcaldesa de Novelda 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Mónica Lorente 	PP 	Alcaldesa de Orihuela 	Brugal 	Imputado 	No
+Comunidad Valenciana 	Nuria Romeral 	PP 	Director general de Ràdio 9 (2011-2013), Secretario autonómica de Comunicación con Francisco Camps (2007-2011) 	RTVV 	Imputado 	No
+Comunidad Valenciana 	Patricia Callaghan 	PP 	Jefa de sección del área de Calidad Ambiental de la Consejería de Territorio 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Paula de Cubas Carrasco 	PP 	Asesora de prensa en la consejería de industria y turismo de la Comunidad Valenciana 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Pedro García Gimeno 	PP 	Director RTVV, secretario de Comunicación del Gobierno de Francisco Camps 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Pedro Hernández Mateo 	PP 	Alcalde de Torrevieja (1988-2011), diputado autonómico (1991-2003) 	Torrevieja 	Condenado 	Sí
+Comunidad Valenciana 	Pilar Ripoll Feliu 	PP 	Directora general de Calidad y Atención al Paciente de Valencia 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Rafael Betoret Parreño 	PP 	Jefe del gabinete de Turismo de la Comunidad Valenciana 	Trajes 	Condenado 	No
+Comunidad Valenciana 	Rafael Blasco 	PP 	Consejero de Solidaridad y Ciudadanía de la Generalitat Valenciana (2007-2011), portavoz del Grupo Popular en las Cortes Valencianas (2009-2012) 	Cooperación 	Condenado 	No
+Comunidad Valenciana 	Rafael Peset 	PP 	Director general de Asistencia Sanitaria 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Ricardo Calatayud Darocas 	PP 	Director económico y financiero de Radio Televisión Valenciana 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Ricardo Costa 	PP 	Secretario general del PP valenciano, diputado autonómico 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Robert Raga Gadea 	PSOE 	Alcalde de Ribarroja del Turia 	Mariachis 	Imputado 	No
+Comunidad Valenciana 	Santos Peral 	PP 	Jefe de Contabilidad de Emarsa. También ha tenido responsabilidades políticas en el PP de Valencia 	Emarsa 	Imputado 	No
+Comunidad Valenciana 	Silvia Caballer Almela 	PP 	Secretaria del área de Formación del PP de Castellón, directora general de Archivos e Innovación Tecnológica, secretaria general del Instituto Valenciano de la Juventud, directora general del Libro 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Sonia Castedo 	PP 	Alcaldesa de Alicante (2008-2014), diputada autonómica (2011-2014) 	Brugal 	Imputado 	No
+Comunidad Valenciana 	Tina Sanjuán 	PP 	Secretaría general administrativa de la Conselleria 	Cooperación 	Condenado 	No
+Comunidad Valenciana 	Vicent Farnós 	PP 	Miembro del Consejo Valenciano de Cultura 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Vicente Rambla Momplet 	PP 	Vicepresidente de la Generalitat, diputado autonómico 	Gürtel 	Imputado 	No
+Comunidad Valenciana 	Víctor Campos Guinot 	PP 	Vicepresidente de la Generalitat Valenciana 	Trajes 	Condenado 	No
+Comunidad Valenciana 	Xavier Llopis 	PP 	Jefe de gabinete de Rafael Blasco 	Cooperación 	Condenado 	No
+Comunidad Valenciana 	Yolanda García Santos 	PP 	Tesorera del PP valenciano, diputada autonómica 	Gürtel 	Imputado 	No
+Galicia 	Adolfo Gacio 	PP 	Alcalde de Boqueixón 	Pokémon 	Imputado 	No
+Galicia 	Adrián Varela 	PP 	concejal de Deportes 	Pokémon 	Imputado 	No
+Galicia 	Francisco Ramón de Lucas Blanco 	PP 		Zeta 	Imputado 	
+Galicia 	Joaquín Varela de Limia 	PP 	Director del Instituto Galego de Promoción Económica 	Campeón 	Imputado 	No
+Galicia 	José Luis Baltar 	PP 	Presidente de la Diputación de Ourense 	Baltar 	Condenado 	No
+Galicia 	José Manuel Rey Varela 	PP 	Alcalde de Ferrol 	Pokémon 	Imputado 	No
+Galicia 	Julio Flores 	PP 	Teniente alcalde de A Coruña 	Pokémon 	Imputado 	No
+Galicia 	Pablo Cobián 	PP 	Diputado autonómico (-, 2011) 	Campeón 	Imputado 	No
+Galicia 	Paula Prado 	PP 	Portavoz del Partido Popular de Galicia 	Pokémon 	Investigado 	No
+Madrid 	Agustín Juárez 	PP 	Alcalde de Collado Villalva 	Púnica 	Imputado 	No
+Madrid 	Alberto López Viejo 	PP 	Consejero de Deportes de la Comunidad de Madrid 	Gürtel 	Imputado 	No
+Madrid 	Alfonso Bosch Tejedor 	PP 	Diputado autonómico de Madrid. Gerente de la Empresa Municipal del Suelo y la Vivienda de Boadilla del Monte 	Gürtel 	Imputado 	No
+Madrid 	Antonio Burgueño 	PP 	Director general de Hospitales 	Privatización sanitaria 	Imputado 	
+Madrid 	Arturo González Panero 	PP 	Alcalde de Boadilla del Monte 	Gürtel 	Imputado 	No
+Madrid 	Benjamín Martín Vasco 	PP 	Diputado autonómico de Madrid 	Gürtel 	Imputado 	No
+Madrid 	David Rodríguez Sanz 	PP 	Alcalde de Casarrubuelos 	Púnica 	Imputado 	No
+Madrid 	Francisco Granados 	PP 	Diputado en la Asamblea de Madrid, Senador en las Cortes Generales, Alcalde de Valdemoro, Consejero de Presidencia, Justicia e Interior de la Comunidad de Madrid, 	Púnica 	Imputado 	Preventiva
+Madrid 	Ginés López Rodríguez 	PP 	Alcalde de Arganda (1995-1999, 2003-2009) 	Gürtel 	Imputado 	No
+Madrid 	Gonzalo Cubas 	PP 	Alcalde de Torrejón de Velasco 	Púnica 	Imputado 	No
+Madrid 	Guillermo García Coello 	PP 	Administrador sociedades de Correa y abogado 	Gürtel 	Imputado 	No
+Madrid 	Guillermo Ortega Alonso 	PP 	Alcalde de Majadahonda 	Gürtel 	Imputado 	No
+Madrid 	Javier Hernández 	PP 	Concejal de Hacienda de Valdemoro 	Púnica 	Imputado 	No
+Madrid 	Jesús Calvo Soria 	PP 	Gerente de la UCM y alto cargo en la CAM con Ruiz-Gallardón 	Gürtel 	Imputado 	No
+Madrid 	Jesús Sepulveda Redo 	PP 	Alcalde de Pozuelo de Alarcón 	Gürtel 	Imputado 	No
+Madrid 	José Antonio Sáenz Jiménez 	PP 	Concejal de Medio Ambiente en Pozuelo 	Gürtel 	Imputado 	No
+Madrid 	José Carlos Boza Lechuga 	PP 	Alcalde de Valdemoro 	Púnica 	Imputado 	Preventiva
+Madrid 	José Galeote Rodríguez 	PP 	Concejal en Boadilla (2002-2004). Consejero de la Empresa Municipal del Suelo y la Vivienda de Boadilla. Gerente del Consorcio Deportivo del Noroeste de Madrid 	Gürtel 	Imputado 	No
+Madrid 	José Luis Peñas Domingo 	PP 	Concejal ayuntamiento Majadahonda 	Gürtel 	Imputado 	No
+Madrid 	José Martínez Nicolás 	PP 	Consejero delegado de la Agencia de Informática y Comunicaciones de la Comunidad de Madrid 	Púnica 	Imputado 	No
+Madrid 	Juan Carlos Clemente Aguado 	PP 	Viceconsejero de inmigración de Madrid 	Gürtel 	Imputado 	No
+Madrid 	Juan Jesús Siguero Aguilar 	PP 	Alcalde de Boadilla del Monte 	Gürtel 	Imputado 	No
+Madrid 	Juan José Moreno Alonso 	PP 	Concejal del PP en Majadahonda 	Gürtel 	Imputado 	No
+Madrid 	Mercedes Coghen 	PP 	Consejera delegada de Madrid 2016, directora general de deportes del Ayuntamiento de Madrid 	Nóos 	Imputado 	
+Madrid 	Patricia Flores 	PP 	Viceconsejera de Sanidad 	Privatización sanitaria 	Imputado 	
+Madrid 	Rosalía Iglesias Villar 	PP 	Esposa de Luis Bárcenas 	Gürtel 	Imputado 	No
+Melilla 	Daniel Conesa 	PP 	Consejero de Economía de Melilla (2003- ) y Vicepresidente Segundo de Melilla 	Ópera 	Imputado 	No
+Melilla 	Hassan Driss 	PP 	Viceconsejero de Servicios Sociales 	Vales 		No
+Melilla 	José Ángel Pérez Calabuig 	PP 	Consejero de Medio Ambiente de Melilla (2011- ) 	Ópera 	Imputado 	No
+Melilla 	Juan José Imbroda 	PP 	Presidente de la Ciudad Autónoma de Melilla (2000- ), Senador 	Abogados 	Investigado 	No
+Melilla 	María Antonia Garbín 	PP 	Consejera de Bienestar Social y Sanidad (2003- ) 	Abogados 	Imputado 	No
+Melilla 	Rafael Marín 	PP 	Consejero adjunto a la Presidencia (2014- ), consejero de Fomento (2004-2011) 	Ópera 	Imputado 	No
+Melilla 	Simy Chocrón 	PP 	Consejera de Cultura y Festejos (2003- ) 	Caso Chocrón 	Imputado 	No
+Murcia 	Amador López 	PP 	Secretario de la Consejería de Fomento, Obras Públicas y Ordenación del Territorio, director general de Medio Ambiente, consejero de Urbanismo de Caravaca de la Cruz 	Roblecillo 	Imputado 	No
+Murcia 	Antonio Alvarado (político) 	PP 	Director general de Calidad Ambiental del Ejecutivo murciano 	Novo Carthago 	Imputado 	No
+Murcia 	Antonio Cerdá 	PP 	Consejero autonómico de Agricultura y Agua 	Novo Carthago 	Imputado 	No
+Murcia 	Domingo Aranda 	PP 	Alcalde de Caravaca de la Cruz 	Roblecillo 	Imputado 	No
+Murcia 	Francisco Marqués (político) 	PP 		Novo Carthago 	Imputado 	No
+Murcia 	Joaquín Bascuñana 	PP 	Delegado del Gobierno en Murcia y ex Consejero murciano de Obras Públicas 	Novo Carthago 	Imputado 	No
+Murcia 	José María Ródenas Cañada 	PP 	Subdirector general de Vivienda, Arquitectura y Urbanismo, subdirector general de Urbanismo y Ordenación del Territorio 	Novo Carthago 	Imputado 	No
+Murcia 	Juan Morales Cánovas 	PP 	Diputado de la Asamblea Regional y alcalde de Totana 	Tótem 	Condenado 	Sí
+Murcia 	Manuel Alfonso Guerrero Zamora 	PP 	Director general de Vivienda 	Novo Carthago 	Imputado 	No
+Murcia 	Pilar Barreiro 	PP 	Diputada del Congreso (2008- ) y alcaldesa de Cartagena 	Novo Carthago 	Investigado 	No
+Andalucía 	Agustín Barberá 	PSOE 	Viceconsejero de empleo (2004-2010) 	ERE 	Imputado 	No
+Andalucía 	Ana María Peña 	PSOE 	Secretario General de Telecomunicaciones 	ERE 	Imputado 	No
+Andalucía 	Ángel Garijo 	PSOE 	Secretario General de Innovación 	ERE 	Imputado 	No
+Andalucía 	Ángel Ojeda Avilés 	PSOE 	Empresario, Consejero de Hacienda (1987-1990) 	Formación 	Imputado 	No
+Andalucía 	Antonio Ávila 	PSOE 	Consejero de Presidencia (2009-2010), Consejero de Economía, Innovación y Ciencia (2010-2013) 	ERE 	Investigado 	No
+Andalucía 	Antonio Diz-Lois 	PSOE 	Director de Finanzas de IDEA (2008) / Jefe de Servicio de la Dirección General de Trabajo y Seguridad Social 	ERE 	Imputado 	No
+Andalucía 	Antonio Estepa 	PSOE 	Secretario General de Hacienda (2000-2004) 	ERE 	Imputado 	No
+Andalucía 	Antonio Fernández 	PSOE 	Consejero de empleo (2004-2010) 	ERE 	Imputado 	Preventiva
+Andalucía 	Antonio Garrido Santoyo 	PSOE 	Miembro de la Ejecutiva del PSOE de Baeza (Jaén) 	Mercasevilla 	Imputado 	
+Andalucía 	Antonio Lamela 	PSOE 	Jefe de la asesoría jurídica de la Consejería de Empleo de la Junta 	ERE 	Imputado 	No
+Andalucía 	Antonio Lozano Peña 	PSOE 	Viceconsejero de la Presidencia / Director General de Presupuestos (2002-2009) 	ERE 	Imputado 	No
+Andalucía 	Antonio Rivas 	PSOE 	Delegado de Empleo de la Junta en la provincia de Sevilla (2000-2010) 	ERE 	Imputado 	No
+Andalucía 	Antonio Valverde 	PSOE 	Director general de IDEA 	ERE 	Imputado 	No
+Andalucía 	Belén Carmona de León 	PSOE 	Concejal Ayuntamiento de Marbella 	Malaya 	Condenado 	
+Andalucía 	Buenaventura Aguilera 	PSOE 	Director General de Presupuestos 	ERE 	Imputado 	No
+Andalucía 	Carmen Martínez Aguayo 	PSOE 	Consejero de Hacienda (2009-2013), ViceConsejero de Hacienda (2004-2009) 	ERE 	Investigado 	No
+Andalucía 	Daniel Ponce 	PSOE 	Subdirector de Mercasevilla 	Mercasevilla 	Condenado 	
+Andalucía 	Daniel Rivera 	PSOE 	Director General de Trabajo (2010-2012) 	ERE 	Imputado 	No
+Andalucía 	Domingo Enrique Castaño 	PSOE 	Consejero de Mercasevilla, director del área de Vía Pública del Ayuntamiento de Sevilla, (entre 2005 y 2012, no al mismo tiempo) y asesor del grupo socialista (1999 a 2003) 	Mercasevilla 	Imputado 	
+Andalucía 	Fernando Mellet 	PSOE 	Director de Mercasevilla 	Mercasevilla 	Condenado 	No
+Andalucía 	Francisco del Río 	PSOE 	Jefe de los servicios jurídicos de la Junta (2001-2008) 	ERE 	Imputado 	No
+Andalucía 	Francisco Fernández Sevilla 	PSOE 	Secretario general de UGT 	Formación 	Imputado 	
+Andalucía 	Francisco García 'Paquillo' 	PSOE 	Secretario General de Empleo 	ERE 	Imputado 	No
+Andalucía 	Francisco Mencía Morales 	PSOE 	Director General del Instituto de Fomento de Andalucía (IFA), lo que hoy es IDEA 	ERE 	Imputado 	No
+Andalucía 	Francisco Vallejo 	PSOE 	Consejero de Innovación (2004-2009) 	ERE 	Investigado 	No
+Andalucía 	Gaspar Zarrías 	PSOE 	Presidente en funciones de la Junta de Andalucía (marzo-abril2009 'interregno') Vicepresidente de la Junta de Andalucía (2008-2009) Consejero de la Presidencia (1996-2010) 	ERE 	Investigado 	No
+Andalucía 	Gonzalo Crespo 	PSOE 	Presidente de Mercasevilla (2006), concejal del Ayuntamiento de Sevilla (2003-2007) 	Mercasevilla 	Imputado 	
+Andalucía 	Gonzalo Suárez (político) 	PSOE 	Viceconsejero Innovación 	ERE 	Imputado 	No
+Andalucía 	Isabel de Haro 	PSOE 	Secretario General de Desarrollo Industrial y Energético 	ERE 	Imputado 	No
+Andalucía 	Isabel García Marcos 	PSOE 	Teniente de alcalde del Ayuntamiento de Marbella 	Malaya 	Condenado 	Preventiva
+Andalucía 	Jacinto Cañete Rolloso 	PSOE 	Director General Agencia IDEA 	ERE 	Imputado 	No
+Andalucía 	Javier Aguado Hinojal 	PSOE 	Secretario General Técnico de Empleo (2004-2008) 	ERE 	Imputado 	No
+Andalucía 	Javier Guerrero 	PSOE 	Director general de Trabajo y Seguridad Social (1999-2008) 	ERE 	Imputado 	Preventiva
+Andalucía 	Jesús María Rodríguez 	PSOE 	Viceconsejero Innovación 	ERE 	Imputado 	No
+Andalucía 	Joaquín Moya-Angeler Cabrera 	PSOE 	Presidente de la Corporación Tecnológica de Andalucía 	ERE 	Imputado 	No
+Andalucía 	José Antonio Griñán 	PSOE 	Presidente de la Junta de Andalucía (2009-2013) Consejero de Economía y Hacienda (2004-2009) 	ERE 	Investigado 	No
+Andalucía 	José Antonio Viera 	PSOE 	Consejero de empleo (2004-2004) 	ERE 	Investigado 	No
+Andalucía 	José de Haro Bailón 	PSOE 	Viceconsejero de Economía (2009-2013) 	ERE 	Imputado 	No
+Andalucía 	José Domínguez Abascal 	PSOE 	Secretario General de Universidades, Investigación y Tecnología (2004-2008) 	ERE 	Imputado 	No
+Andalucía 	José Jaén Polonio 	PSOE 	Concejal de Cultura y Educación de Marbella y teniente de alcalde del Ayuntamiento de Marbella 	Malaya 	Condenado 	Preventiva
+Andalucía 	José Manuel Pulido Pino 	PSOE 	Jefe de Caja y Contabilidad de Mercasevilla. 	Mercasevilla 	Imputado 	No
+Andalucía 	José Salgueiro 	PSOE 	Viceconsejero Economía y Hacienda 	ERE 	Imputado 	No
+Andalucía 	Juan Antonio Bisbal 	PSOE 	Concejal de Almería, funcionario del Ayuntamiento y asesor en la fecha de los hechos del grupo municipal de su partido 	Facturas 	Imputado 	
+Andalucía 	Juan Carlos Soriano Hernández 	PSOE 	Viceconsejero de Relaciones Institucionales 	ERE 	Imputado 	No
+Andalucía 	Juan Francisco Sánchez (político) 	PSOE 	Secretario General IDEA (2012-2014) / Director Finanzas IDEA (2010-2012) / Secretario General Técnico de Innovación, Ciencia y Empresa (2004-2010) / Secretario General Técnico Empleo y Desarrollo Tecnológico (2000-2004) / Delegado Economía y Hacienda en Sevilla (1994-2000) 	ERE 	Imputado 	No
+Andalucía 	Juan Francisco Trujillo 	PSOE 	Chófer de Javier Guerrero, consejero de Empleo de la Junta de Andalucía 	ERE 	Imputado 	No
+Andalucía 	Juan Luque Alfonso 	PSOE 	Interventor de la Consejería de Empleo 	ERE 	Imputado 	No
+Andalucía 	Juan Márquez (político) 	PSOE 	Director general de Trabajo y Seguridad Social (2008-2010) 	ERE 	Imputado 	No
+Andalucía 	Juan Rodríguez Cordobés 	PSOE 	Delegado de Trabajo y Asuntos Sociales en Sevilla (1999-2000) 	ERE 	Imputado 	No
+Andalucía 	Juan Vela Quiroga 	PSOE 	Director de Finanzas de IDEA (2004-2008) 	ERE 	Imputado 	No
+Andalucía 	Justo Mañas 	PSOE 	Viceconsejero de empleo (2010-2012) 	ERE 	Imputado 	No
+Andalucía 	Lourdes Medina Barrios 	PSOE 	Secretario General Técnico de Empleo (2008-2012) 	ERE 	Imputado 	No
+Andalucía 	Luis Pérez Montoya 	PSOE 	Vicepresidente de la diputación de Almería 	Facturas 	Imputado 	
+Andalucía 	Magdalena Álvarez 	PSOE 	Consejero de Economía y Hacienda (1994-2004) 	ERE 	Imputado 	No
+Andalucía 	Manuel Chaves 	PSOE 	Presidente de la Junta de Andalucía (1990-2009) 	ERE 	Investigado 	No
+Andalucía 	Manuel Gómez Martínez 	PSOE 	Interventor General de Hacienda 	ERE 	Imputado 	No
+Andalucía 	Manuel Marchena 	PSOE 	Gerente de Urbanismo del Ayuntamiento de Sevilla, durante el gobierno PSOE-IU 	Mercasevilla 	Imputado 	
+Andalucía 	Manuel Pastrana 	PSOE 	Secretario general de UGT 	Formación 	Imputado 	
+Andalucía 	Manuel Recio 	PSOE 	Consejero de empleo (2010-2012) 	ERE 	Investigado 	No
+Andalucía 	Mar Moreno 	PSOE 	Consejero de la Presidencia (2010-2012) 	ERE 	Investigado 	No
+Andalucía 	Martín Soler 	PSOE 	Consejero de Innovación 	ERE 	Imputado 	No
+Andalucía 	Miguel Ángel Millán 	PSOE 	Gerente de Urbanismo del Ayuntamiento de Sevilla 	Mercasevilla 	Imputado 	
+Andalucía 	Miguel Ángel Serrano (político) 	PSOE 	Director general de IDEA 	ERE 	Imputado 	No
+Andalucía 	Pablo Millán Márquez 	PSOE 	Director de Finanzas del IFA (1999-2004) 	ERE 	Imputado 	No
+Andalucía 	Pilar Giraldo 	PSOE 	Director del área Económico-Financiera de Mercasevilla 	Mercasevilla 	Imputado 	No
+Andalucía 	Pilar Rodríguez López 	PSOE 	Secretario General de Telecomunicaciones 	ERE 	Imputado 	No
+Andalucía 	Rafael Herrera Gil 	PSOE 	Secretario General de Empleo 	ERE 	Imputado 	No
+Andalucía 	Ramón Díaz Alcaraz 	PSOE 	Asesor de la Consejería de Empleo / Diputado del PSOE en el Parlamento de Andalucía / Secretario general PSOE Sevilla Este 	ERE 	Imputado 	No
+Andalucía 	Regla Pereira 	PSOE 	Director de Estructuras de Mercasevilla. 	Mercasevilla 	Imputado 	No
+Asturias 	Francisco González Méndez 	PSOE 	Alcalde de Cudillero. Diputado autonómico 	Cudillero 	Imputado 	No
+Asturias 	José Luis Iglesias Riopedre 	PSOE 	Consejero de educación 	Marea 	Imputado 	Preventiva
+Asturias 	María Jesús Otero 	PSOE 	Director general de Planificación, Centros e Infraestructuras y jefa de compras de la Consejería 	Marea 	Imputado 	Preventiva
+Aragón 	Carlos Escó 	PSOE 	Viceconsejero de Obras Públicas y consejero delegado de Plaza 	Plaza 	Imputado 	No
+Castilla La Mancha 	José Luis Martín 	PSOE 	Alcalde de Seseña 	Seseña 	Imputado 	No
+Cataluña 	Josep Maria Huguet 	PSOE 	Jefe de Hacienda de Cataluña 	Hacienda 	Condenado 	Sí
+Comunidad Valenciana 	Antonio Santo Juan 	PSOE 	Jefe de área en Vaersa 	Gürtel 	Imputado 	No
+Extremadura 	José Luis Viñuela 	PSOE 	Director general de la Institución Ferial de Extremadura y ex diputado del PSOE 	Feval 	Imputado 	No
+Extremadura 	José Villa (político) 	PSOE 	Subdirector de la Institución Ferial de extremadura y ex director general del PSOE 	Feval 	Imputado 	No
+Extremadura 	Juan Cerrato 	PSOE 	Administrador general de la Institución Ferial de Extremadura 	Feval 	Imputado 	No
+Galicia 	Francisco Fernández Liñares 	PSOE 	Presidente de la Confederación Hidrográfica do Miño-Sil yex concejal de economía y urbanismo del Ayuntamiento de Lugo 	Pokémon 	Imputado 	Preventiva
+Galicia 	Francisco Rodríguez 	PSOE 	Alcalde de Ourense 	Pokémon 	Imputado 	No
+Galicia 	Jesús Otero (político) 	PSOE 	Subdelegado del Gobierno en Lugo 	Carioca 	Imputado 	No
+Galicia 	José Federico Nogueira 	PSOE 	Concejal de A Coruña 	Pokémon 	Imputado 	No
+Galicia 	Manuel Pico Yáñez 	PSOE 	Concejal de Cospeito y empresario 	Pokémon 	Imputado 	No
+Galicia 	Mercedes Carbajales Iglesias 	PSOE 	Consejero de Cultura, Educación y Universidades 	Pokémon 	Imputado 	No
+Galicia 	Xosé Orozco 	PSOE 	Alcalde de Lugo 	Pokémon 	Imputado 	No
+Madrid 	Avelino Pérez Pallares 	PSOE 	Cargo de confianza adscrito al Área de Sostenibilidad, Obras y Mantenimiento de Obras Públicas en Parla 	Operación Púnica 	Imputado 	No
+Madrid 	José María Fraile 	PSOE 	Alcalde de Parla 	Operación Púnica 	Imputado 	No
+Melilla 	Alonso Díaz (político) 	PSOE 	Secretario de organización del PSOE, secretario general de UGT Melilla 	Voto por correo 	Imputado 	No
+Melilla 	Amin Azmani 	PSOE 	Secretario General de Juventudes Socialistas de Melilla 	Voto por correo 	Imputado 	No
+Melilla 	Ana Mansilla 	PSOE 	Directora provincial del Servicio Público de Empleo Estatal en Melilla, Secretaria de Organización del PSOE de Melilla y Diputada del PSOE en la Asamblea de Melilla 	Voto por correo 	Imputado 	No
+Melilla 	Celia Sarompas 	PSOE 	Cargo de la ejecutiva del PSOE de Melilla y Diputada en la Asamblea de Melilla 	Voto por correo 	Imputado 	No
+Melilla 	Dionisio Muñoz 	PSOE 	Secretario General del PSOE de Melilla, diputado de la asamblea en Melilla 	Voto por correo 	Imputado 	No
+Melilla 	Gabriel Jiménez Heredia 	PSOE 	Cargo de la ejecutiva del PSOE de Melilla 	Voto por correo 	Imputado 	No
+Melilla 	Joaquín Arana 	PSOE 	Director provincial del Servicio Público de Empleo Estatal en Melilla 	Voto por correo 	Imputado 	No
+Melilla 	Nora Hamad 	PSOE 	Cargo de la ejecutiva del PSOE de Melilla 	Voto por correo 	Imputado 	No
+Melilla 	Rabea Aomar 	PSOE 	Cargo de la ejecutiva del PSOE de Melilla 	Voto por correo 	Imputado 	No
+Melilla 	Rafael Robles (político) 	PSOE 	Cargo de la ejecutiva del PSOE de Melilla 	Voto por correo 	Imputado 	No
+Melilla 	Sergio Martínez 	PSOE 	Miembro, de Juventudes Socialistas de Melilla, actualmente Secretario General 	Voto por correo 	Imputado 	No
+Melilla 	Yeray Díaz 	PSOE 	Cargo de la ejecutiva del PSOE de Melilla 	Voto por correo 	Imputado 	No
+Murcia 	Jesús Norberto Galindo 	PSOE 	Secretario del Instituto de Turismo de la Región de Murcia 	Operación Púnica 	Imputado 	No
+Murcia 	José Antonio Alonso (alcalde de Cartagena) 	PSOE 	Alcalde de Cartagena 	Operación Púnica 	Imputado 	No
+Cataluña 	Bartomeu Muñoz 	PSC 	Alcalde de Santa Coloma de Gramanet y vicepresidente de la diputación provincial de Barcelona 	Pretoria 	Condenado6​ 	Preventiva
+Cataluña 	Joan Manau 	PSC 	Concejal de urbanismo de Sabadell 	Mercurio 	Imputado 	No
+Cataluña 	Joaquim Nadal 	PSC 	Dirigente del PSC y consejero de Política Territorial (2003-2010) 	Incasol 	Imputado 	No
+Cataluña 	Luis García Sánchez, 'Luigi', cerebro de la trama. 	PSC 	Diputado del PSC 	Pretoria 	Condenado6​ 	Preventiva
+Cataluña 	Lluís Miquel Pérez 	PSC 	Alcalde de Reus 	Innova 	Imputado 	
+Cataluña 	Manel Bustos 	PSC 	Alcalde de Sabadell 	Mercurio 	Imputado 	No
+Cataluña 	Manuel Dobarco 	PSC 	Concejal de Urbanismo de Santa Coloma de Gramanet 	Pretoria 	Condenado6​ 	Preventiva
+Cataluña 	Montserrat Capdevila 	PSC 	Concejal de Economía de Sabadell y diputada 	Mercurio 	Imputado 	No
+Cataluña 	Carles Manté 	CIU (CDC) 	Responsable de Cat Salut 	Innova 	Imputado 	
+Cataluña 	Daniel Osàcar 	CIU (CDC) 	Tesorero de CDC 	Millet 	Imputado 	No
+Cataluña 	Daniel Osàcar 	CIU (CDC) 	Tesorero de CDC 	Osàcar 	Imputado 	No
+Cataluña 	Félix Millet 	CIU (CDC) 	Presidente de la Fundación Orfeón Catalán - Palacio de la Música Catalana entre los años 1990 y 2009 	Millet 	Condenado 	No
+Cataluña 	Francesc Xavier Solà 	CIU (CDC) 	Jefe de servicios jurídicos y ex secretario general de Departamento de Cultura 	Solà y Matas 	Imputado 	No
+Cataluña 	Jordi Huguet Farré 	CIU (CDC) 	Director técnico 	Adigsa 	Imputado 	No
+Cataluña 	Jordi Montull 	CIU (CDC) 	Mano derecha de Félix Millet 	Millet 	Condenado 	No
+Cataluña 	Jordi Pujol Ferrusola 	CIU (CDC) 	Hijo de Jordi Pujol 	Pujol 	Imputado 	Si
+Cataluña 	Jordi Pujol Soley 	CIU (CDC) 	Presidente de la Generalitat (1980-2003) 	Pujol 	Investigado 	No
+Cataluña 	Josep Antoni Fontevilla 	CIU (CDC) 	Diputado y consejero delegado ADIGSA 	Adigsa 	Imputado 	No
+Cataluña 	Josep Maria Matas 	CIU (CDC) 	Secretario de la Associació Catalana de Municipis 	Solà y Matas 	Imputado 	No
+Cataluña 	Josep Poblet 	CIU (CDC) 	Presidente de la Diputación de Tarragona y alcalde de Vila-seca 	Innova 	Imputado 	No
+Cataluña 	Josep Prat (político) 	CIU (CDC) 	Presidente del Instituto Catalán de la Salud y director general de Innova 	Innova 	Imputado 	
+Cataluña 	Josep Tous 	CIU (CDC) 	Director general de Consumo y Seguridad Industrial de la Generalitat, diputado por Barcelona 	ITV 	Imputado 	No
+Cataluña 	Lluís Prenafeta 	CIU (CDC) 	Primer secretario general de la Generalitat de Jordi Pujol 	Pretoria 	Condenado6​ 	Preventiva
+Cataluña 	Macià Alavedra 	CIU (CDC) 	Conseller de Jordi Pujol durante 15 años 	Pretoria 	Condenado6​ 	Preventiva
+Cataluña 	Marta Ferrusola 	CIU (CDC) 	Mujer de Jordi Pujol 	Pujol 	Investigado 	No
+Cataluña 	Mercé Gironés 	CIU (CDC) 	Esposa de Jordi Pujol Ferrusola 	ITV 	Imputado 	No
+Cataluña 	Oleguer Pujol Ferrusola 	CIU (CDC) 	Hijo de Jordi Pujol 	Pujol 	Imputado 	No
+Cataluña 	Oriol Pujol Ferrusola 	CIU (CDC) 	Diputado Parlament de Cataluña, portavoz del grupo parlamentario CIU, secretario General CDC (2012-2013) 	ITV 	Imputado 	No
+Cataluña 	Xavier Crespo 	CIU (CDC) 	Diputado autonómico y alcalde de Lloret de Mar 	Clotilde 	Imputado 	No
+Cataluña 	Xavier Sala Serra 	CIU (CDC) 	Responsable económico 	Adigsa 	Imputado 	No
+Cataluña 	Josep Maria Servitje 	CIU (UDC) 	Secretario General del Departamento de Trabajo 	Treball 	Condenado 	No
+Cataluña 	Lluís Gavaldà (político) 	CIU (UDC) 	Director general de Trabajo 	Pallerols 	Condenado 	Sí
+Cataluña 	Vicenç Gavaldà 	CIU (UDC) 	Secretario de organización de Unió 	Pallerols 	Condenado 	Sí 
