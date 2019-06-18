@@ -32,6 +32,9 @@ either expressed or implied, of the FreeBSD Project.
 
 import requests
 from bs4 import BeautifulSoup
+from validate_email import validate_email
+
+emails = ("@gmail.com", "@yahoo.com", "@hotmail.com", "@hotmail.es", "@outlook.com", "@live.com", "@hushmail.com", "@me.com", "@mail.com", "@protonmail.com", "@facebook.com")
 
 urls={"Facebook":"https://www.facebook.com/data",
       "YouTube":"https://www.youtube.com/user/data",
@@ -190,13 +193,13 @@ def banner():
       `.hh  .ys`        .hs          /y/ +d-`     
        -yd-  +hs.  ./ ``+dd-   -   `odo` yh:`     
        `.hy  `ohh/../-syyddss+-o ./yds. -d+`      
-         :d+  `oydhs/-shhddhy+-:ohdhs. `ys`       OSINT
-          +h:-``ohdmmmmmmmmmmdddmmhs.`.+y.           PARA
-           /hdhsyhdddmmNNmmmmmmhyyyyshhy.              TODOS
-            -/oyhydmmmmmdmmdyyhyyhyyyo/.                 E
-               `.yhddmmdymdhoyddhys`                       INVESTIGA
-           `.:+sydyhddddhdddhhhdysyo+/.`                     CONMIGO
-       `.:+o+:.:dmmdmmmmmmmmddmddddd:-+o+-` 
+         :d+  `oydhs/-shhddhy+-:ohdhs. `ys`       OSINT PARA TODOS
+          +h:-``ohdmmmmmmmmmmdddmmhs.`.+y.        
+           /hdhsyhdddmmNNmmmmmmhyyyyshhy.         
+            -/oyhydmmmmmdmmdyyhyyhyyyo/.               Y
+               `.yhddmmdymdhoyddhys`              
+           `.:+sydyhddddhdddhhhdysyo+/.`                   INVESTIGA
+       `.:+o+:.:dmmdmmmmmmmmddmddddd:-+o+-`                     CONMIGO
      -+oo:.`   +dmmmmdmmmmmmmmssdmhy/  `-/++:`    
    .+:.`.     `shmmNdo/ymmmmmy/+shsyo     .::/`   
   :+`         -sydmmhs-/mmhmy+/+sdhso`       -+`  
@@ -236,5 +239,23 @@ def main():
     r_nicks = getnickWebs(nick)
     for n in r_nicks:
         print "|----[INFO][" + n.upper() + "][>] " + r_nicks.get(n).replace("data", nick)
+    
+    print "|"
+    print "|----[INFO][START] Scanning emails with nicknames..."
+    print "|"
+    for email in emails:
+        target = nick + email
+        try:
+			is_valid = validate_email(target,verify=True)
+			if is_valid:
+				print "|----[INFO][EMAIL][>] " + target
+				print "|--------[INFO][EMAIL][>] Email validated..."
+			else:
+				print "|----[INFO][TARGET][>] " + target
+				print "|--------[INFO][EMAIL][>] It's not created..."
+        except Exception, e:
+            print e
+            print "[INFO][TARGET][>] " + target
+            print "|--[INFO][EMAIL] No verification possible... "
 
 main()
