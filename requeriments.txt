@@ -1,3 +1,6 @@
-beautifulsoup4
+bs4
+requests[socks]
 wikipedia
 requests
+twint
+random-user-agent

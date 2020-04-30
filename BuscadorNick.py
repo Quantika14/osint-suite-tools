@@ -1,8 +1,5 @@
-#!/usr/bin/env python
-#-*- coding:utf-8 -*-
-
 '''
-Copyright (c) 2019, QuantiKa14 Servicios Integrales S.L
+Copyright (c) 2020, QuantiKa14 Servicios Integrales S.L
 All rights reserved.
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met: 
@@ -38,6 +35,7 @@ emails = ("@gmail.com", "@yahoo.com", "@hotmail.com", "@hotmail.es", "@outlook.c
 
 urls={"Facebook":"https://www.facebook.com/data",
       "YouTube":"https://www.youtube.com/user/data",
+      "Codecanton":"https://codecanyon.net/user/",
       "Twitter":"https://twitter.com/data",
       "Instagram":"https://www.instagram.com/data/",
       "Blogger":"http://data.blogspot.com/",
@@ -153,7 +151,7 @@ def clean_webs(response, name):
 
 def getnickWebs(nick):
     dictWebs=dict()
-    for name,url in urls.iteritems():
+    for name,url in urls.items():
         try:
             url=url.replace("data",nick)
             response=requests.get(url)
@@ -178,7 +176,7 @@ def getnickWebs(nick):
 
 
 def banner():
-    print """                               -                 
+    print("""                               -                 
                                 -                 
                      .-         .o:               
           .`      .+o-            /s-             
@@ -220,42 +218,48 @@ def banner():
          :s-``                       `..o+        
            ..                         `-.         
  
- """
-    print "-----------------------------------------------------------------------------------------------"
-    print "DANTE'S GATES MINIMAL v 1.0 | <<TIP-1337>> | Buscador De Nicks | QUANTIKA14 | @JORGEWEBSEC"
-    print "     VERSION: 1.0 | 19/02/2019 | INVESTIGA CONMIGO DESDE EL SU | WWW.QUANTIKA14.COM "
+ """)
+    print("-----------------------------------------------------------------------------------------------")
+    print("DANTE'S GATES MINIMAL v 1.0 | <<TIP-1337>> | Buscador De Nicks | QUANTIKA14 | @JORGEWEBSEC")
+    print("     VERSION: 1.0 | 19/02/2019 | INVESTIGA CONMIGO DESDE EL SU | WWW.QUANTIKA14.COM ")
+    print("     VERSION: 1.0.1 | 30/04/2020 | 2TO3")
 
 def main():
     banner()
-    print "_______________________________________________________________________________________________"
-    print "| El buscador de nicks no es perfecto. Necesita la colaboración de todos para mejorar.        |"
-    print "| Si quieres ayudarnos con Dante's Gates Minimal Version solo tienes que compartirnos tu idea |"
-    print "| Si hay un fallo o mejoras puedes subirlo en issues aquí:                                    |"
-    print "| https://github.com/Quantika14/osint-suite-tools/issues                                      |"
-    print "|_____________________________________________________________________________________________|"
+    print("_______________________________________________________________________________________________")
+    print("| El buscador de nicks no es perfecto. Necesita la colaboración de todos para mejorar.        |")
+    print("| Si quieres ayudarnos con Dante's Gates Minimal Version solo tienes que compartir tu idea.   |")
+    print("| Si hay un fallo o mejoras puedes subirlo en issues aquí, gracias.                           |")
+    print("| https://github.com/Quantika14/osint-suite-tools/issues                                      |")
+    print("|_____________________________________________________________________________________________|")
 
-    print ""
-    nick = raw_input("Indique el nick que quiere buscar:")
+    print("")
+    nick = input("Indique el nick que quiere buscar:")
+    print("Este proceso puede tardar varios minutos...")
     r_nicks = getnickWebs(nick)
     for n in r_nicks:
-        print "|----[INFO][" + n.upper() + "][>] " + r_nicks.get(n).replace("data", nick)
-    
-    print "|"
-    print "|----[INFO][START] Scanning emails with nicknames..."
-    print "|"
+        print("|----[INFO][" + n.upper() + "][>] " + r_nicks.get(n).replace("data", nick))
+    print("|")
+    print("|----[INFO][START] Scanning emails with nicknames...")
+    print("|")
+
     for email in emails:
         target = nick + email
         try:
-			is_valid = validate_email(target,verify=True)
-			if is_valid:
-				print "|----[INFO][EMAIL][>] " + target
-				print "|--------[INFO][EMAIL][>] Email validated..."
-			else:
-				print "|----[INFO][TARGET][>] " + target
-				print "|--------[INFO][EMAIL][>] It's not created..."
-        except Exception, e:
-            print e
-            print "[INFO][TARGET][>] " + target
-            print "|--[INFO][EMAIL] No verification possible... "
+            is_valid = validate_email(target,verify=True)
+            if is_valid:
+                print("|----[INFO][EMAIL][>] " + target)
+                print("|--------[INFO][EMAIL][>] Email validated...")
+            else:
 
-main()
+                print("|----[INFO][TARGET][>] " + target)
+                print("|--------[INFO][EMAIL][>] It's not created...")
+
+        except Exception as e:
+            
+            print(e)
+            print("[INFO][TARGET][>] " + target)
+            print("|--[INFO][EMAIL] No verification possible... ")
+
+if __name__ == "__main__":
+    main()

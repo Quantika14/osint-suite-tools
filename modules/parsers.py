@@ -8,7 +8,7 @@ def parser_email(text):
 	results = r.findall(text)
 	if results:
 		for x in results:
-				print "|--------[INFO][PARSER][EMAIL][>] " + str(x)
+				print("|--------[INFO][PARSER][EMAIL][>] " + str(x))
 
 
 def parser_n_tlfn(text):
@@ -24,10 +24,10 @@ def parser_n_tlfn(text):
 	r2 = reg2.findall(text)
 
 	for x in r0:
-		print "|--------[INFO][PARSER][EMAIL][>] " + str(x)
+		print("|--------[INFO][PARSER][EMAIL][>] " + str(x))
 	
 	for x in r1:
-		print "|--------[INFO][PARSER][EMAIL][>] " + str(x)
+		print("|--------[INFO][PARSER][EMAIL][>] " + str(x))
 	
 	for x in r2:
-		print "|--------[INFO][PARSER][EMAIL][>] " + str(x)
+		print("|--------[INFO][PARSER][EMAIL][>] " + str(x))

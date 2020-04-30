@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-#-*- coding:utf-8 -*-
+import re
 
 def replace_acentos(cadena):
     cadena = cadena.upper()
@@ -20,3 +19,9 @@ def replace_letras_raras(cadena):
     cadena = cadena.upper()
     cadena = cadena.replace("Ñ", "N")
     return cadena.lower()
+
+# Eliminar tags HTML
+TAG_RE = re.compile(r'<[^>]+>')
+def remove_tags(text):
+	return TAG_RE.sub('', text)
+
