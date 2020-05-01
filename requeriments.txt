@@ -4,4 +4,8 @@ wikipedia
 requests
 twint
 random-user-agent
-py3-validate-email
+py3DNS
+validate_email
+mechanize
+twint
+wikipedia
