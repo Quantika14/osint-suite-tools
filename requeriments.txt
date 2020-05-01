@@ -4,3 +4,5 @@ wikipedia
 requests
 twint
 random-user-agent
+pyDNS
+validate_email
