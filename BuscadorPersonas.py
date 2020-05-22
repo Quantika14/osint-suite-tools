@@ -34,17 +34,13 @@ import modules.control as control
 import modules.parsers as parser
 import modules.findData as findData_local
 import modules.config as config
+import modules.graph as graph
+import modules.spainpress as spainpress
 
-
-#Cabeceras para los requests
-headers = {'User-Agent': 'My User Agent 1.0'}
-
-TAG_RE = re.compile(r'<[^>]+>')
-def remove_tags(text):
-    return TAG_RE.sub('', text)
 
 #Funciones para buscar en BORME
 def parserLibreborme_json(j):
+    print()
     print("|----[INFO][CARGOS EN EMPRESAS ACTUALMENTE][>] ")
     for cargos_actuales in j["cargos_actuales"]:
         print("    - Desde: " + cargos_actuales["date_from"] + " hasta la actualidad.")
@@ -54,8 +50,11 @@ def parserLibreborme_json(j):
         if cargos_actuales["name"]:
 
             print("|----[INFO][LOCAL DATA][Adjudicaciones][>] Este proceso puede tardar...")
-            findData_local.search_adjudicaciones(cargos_actuales["name"])
+            #findData_local.search_adjudicaciones(cargos_actuales["name"])
 
+        config.companiesData_list.append(cargos_actuales["name"])
+
+    print()
     print("|----[INFO][CARGOS EN EMPRESAS HISTORICOS][>] ")
     for cargos_historicos in j["cargos_historial"]:
         try:
@@ -69,8 +68,10 @@ def parserLibreborme_json(j):
         if cargos_historicos["name"]:
             
             print("|----[INFO][LOCAL DATA][Adjudicaciones][>] Este proceso puede tardar...")
-            findData_local.search_adjudicaciones(cargos_historicos["name"])
-    
+            #findData_local.search_adjudicaciones(cargos_historicos["name"])
+
+        config.data_list.append(cargos_historicos["name"])
+
     print("|----[FUENTES][BORME][>] ")
     for boe in j["in_bormes"]:
         print("    - CVE: " + boe["cve"])
@@ -83,7 +84,7 @@ def searchLibreborme(apellidos, nombre):
         html_text = html.text
 
         if len(html_text)>1:
-    
+            
             j = json.loads(html.text)
             parserLibreborme_json(j)
             
@@ -107,6 +108,7 @@ def searchWikipedia(target):
         d0 = wikipedia.search(target)
 
         if d0:
+            print()
             print("|----[INFO][WIKIPEDIA][>] ")
             print("     |----[INFO][SEARCH][>] ")
             print("     - Resultados encontrados: ")
@@ -130,6 +132,7 @@ def searchWikipedia(target):
                 print("     - " + l)
             print("|----[FUENTES][WIKIPEDIA][>] ")
             print("     - " + urlWIKI)
+            config.wikipediaData_list.append(urlWIKI)
         else:
             print("|----[INFO][WIKIPEDIA][>] No aparecen resultados en WIKIPEDIA.")
     
@@ -145,12 +148,13 @@ def searchYoutube(target):
     vids = soup.findAll('a',attrs={'class':'yt-uix-tile-link'})
     vids_titles = soup.findAll("div", attrs={'class', 'style-scope ytd-video-renderer'})
 
-    videolist=[]
+    videolist = config.youtubeData_list
 
     for v in vids:
         tmp = 'https://www.youtube.com' + v['href']
         videolist.append(tmp)
     
+    print()
     print("|----[INFO][YOUTUBE][>] ")
     for v in vids_titles:
         print("     - " + v)
@@ -175,7 +179,7 @@ def searchPaginasAmarillas(nombre, a1, a2, loc):
 
     soup = BeautifulSoup(html, "html.parser")
     r = soup.find("div", attrs={'class': 'resul yellad yellad_ad0'})
-    r = remove_tags(str(r))
+    r = er.remove_tags(str(r))
 
     if not r == "None":
         print("|----[INFO][PAGINAS AMARILLAS][>] ")
@@ -185,83 +189,61 @@ def searchPaginasAmarillas(nombre, a1, a2, loc):
 
 #Funciones para buscar en Infojobs
 def searchInfojobs(nombre, a1, a2, loc):
-    global headers
+    
+    headers = {'User-Agent': "DG Minimal Version"}
     url_array = ("https://www.infojobs.net/" + nombre.replace(" ", "-") + "-" + a1.replace(" ", "-") + "-" + a2.replace(" ", "-") + ".prf", "https://www.infojobs.net/" + nombre.replace(" ", "-") + "-" + a1.replace(" ", "-") + ".prf", "https://www.infojobs.net/" + nombre.replace(" ", "-") + "-" + a1.replace(" ", "-") + "-1.prf")
     for url in url_array:
         html = requests.get(url, headers=headers).text
         soup = BeautifulSoup(html, "html.parser")
         h1s = soup.findAll("h1")
         for h1 in h1s:
-            if "humano" in h1:
+            if "humano" in er.remove_tags(str(h1)):
+                print ()
                 print("|----[INFO][INFOJOBS][>] Captcha detectado...")
                 break
             else:
+                print()
                 print("|----[INFO][INFOJOBS][>] " + str(h1))
 
-def search_bing_(target):
-	engine = Bing()
-	results = engine.search(target)
-	for r in results:
-		print ("|--[INFO][BING][RESULTS][>] " + r["title"] + " | " + r["text"] + " | " + r["link"] + "\n")
-
 def search_google_(target):
-	engine = Google()
-	results = engine.search(target)
-	for r in results:
-		print ("|--[INFO][GOOGLE][RESULTS][>] " + r["title"] + " | " + r["text"] + " | " + r["link"] + "\n")
+    engine = Google()
+    results = engine.search("'" + target + "'")
+    for r in results:
+        print ("|--[INFO][GOOGLE][RESULTS][>] " + r["title"] + " | " + r["text"] + " | " + r["link"])
+        
+        try:
+            web = requests.get(r["link"], timeout=3)
+            print ("|----[INFO][WEB][HTTP CODE][>] " + str(web.status_code) + "\n")
+            if web.status_code >= 200 or web.status_code < 300:
+                TEXT = er.remove_tags(str(web.text))
+                parser.parserMAIN(TEXT)
+
+        except Exception as e:
+            print ("|----[ERROR][HTTP CONNECTION][>] " + str(e))
+
+
+
+def graphGenerator_Companies(target):
+    graph.get_GraphNodePersonalData(target)
 
 def banner():
-    print("""
-                                                                                                        
-                             -:--:::-...-::---..` `                                                 
-                           `+s+so+++/++:---:::--:::::-::------..```                                 
-                           +dhsdho+/+/::://:::----/:++o/-----....--:-.                              
-                          -NNNNmdsdo+s/://:::::/-::y/://--:-.....-.--::.                            
-                          yNhyNMmdd++y://:/::::::::---::-/:::---.--.--::-`                          
-                          yh//hNNmhssy:/s+:/+/++/+++/////:+/:::-....-----.`                         
-                           .` :-/+ooso++o++ooososysoooo+://oso/::------.-.-`                        
-                                    `-``` ./oshhysssssssoooo++:::/:::----.-.                        
-                                              smhyoos++++sssso//------:+---.                        
-                                             `yNmdyo+oo+:.oyhysys+::--..---.                        
-    OSINT PARA TODOS                          +NNNmhso+/:-``+dmdhyho+:-:---:.`                       
-                                            .NNNNmyo/-``   `ymmdhyys+++::--..                       
-        E                                   hNmNmho/`       /NNmdhhms+oo-.....                      
-                                           +Nmdddh+`      ` .NNmdmNo/o/+:----:                      
-            INVESTIGA CONMIGO...          .Nmmddhs-        `:NNNNd/:+++o+/:---                      
-                                         .dmmmdho/.       :+dMNsso+/+++o+++:--`                     
-                                        :mmmdhyo/`     `+dNNdsys/+++/+/+/o+/--`                     
-                                       oNmddhs+:.-.  `+mNNNy+o++////////+++/:-                      
-                                     -ydhhyss++hdho-+dNNNh++o+///::////+++///.                      
-                                   .ydhyssooosmmmddmmNNds++++/:::://////++++/.                      
-                                  yddysso+ooydmmdhhmNms+++:`/yoo+/////++/+++:.                      
-                                  sdhss++shhdhyhhymmy+++:`  .mhyso++///+////--.                     
-                                  mmhss+hhmdhsshmmyoo/.      ymdhyyo+///+++/:---`                   
-                                  hNmdhhmdmdyydmy+o/.        -mddhhys+//o++//--:--`                 
-                                   /mMMNmdmNmdyo+:`           +ddddhyo//ooo+:--:::--.`              
-                                     :+syhhyo/:.               odddhhs+/+sso+:.:::::::-.`         """)
-    print("-----------------------------------------------------------------------------------------------")
-    print("DANTE'S GATES MINIMAL v 1.0 | <<TIP-1337>> | Gorgue de Triana | QUANTIKA14 | @JORGEWEBSEC")
-    print("     VERSION: 1.0 | 09/02/2019 | INVESTIGA CONMIGO DESDE EL SU | WWW.QUANTIKA14.COM ")
-    print("     VERSION: 1.1 | 30/04/2020 | 2TO3 & GOOGLE SEARCH")
+    print(config.banner)
 
 def menu():
-    print("")
-    print("-----------------------------------------------------------------------------------------------")
-    print("Dante's Gates Minimal Version es un buscador inteligente para hacer OSINT de forma automática.")
-    print("Toda la información es siempre de fuentes abiertas y siempre se dará la dirección de las fuentes")
-    print("")
     print("__________________________________________________")
-    print("| 1. Nombre y apellidos                          |")
-    print("| 2. Nombre, apellidos y ciudad                  |")
-    print("| 3. Buscar nombres y apellidos de una lista     |")
+    print("| 1. Name and surnames                           |")
+    print("| 2. Name, surnames and city                     |")
+    print("| 3. Search names and surnames in list           |")
     print("|________________________________________________|")
+    print()
 
-    m = int(input("Selecciona 1/2/3: "))
+    m = int(input("Select 1/2/3: "))
     if m == 1:
-        #Datos de entrada sin limpiar tildes y simbolos
-        nombre = input("Por favor indique el nombre: ")
-        apellido1 = input("Por favor indique el primer apellido: ")
-        apellido2 = input("Por favor indique el segundo apellido: ")
+        
+        nombre = input("Insert name: ")
+        apellido1 = input("Insert surname (only one): ")
+        apellido2 = input("Insert second surname: ")
+
 
         #Buscamos si aparece en la lista de politicos investigados o condenados
         findData_local.search_investigados_condenados_politicosSpain(nombre, apellido1)
@@ -282,19 +264,22 @@ def menu():
         searchWikipedia(target)
         searchLibreborme(apellidos_, nombre_)
         searchYoutube(target)
-        search_bing_(target)
         search_google_(target)
+        spainpress.search_abc_es(target)
 
-        print("")
-        print("[--------------------------------------------------]")
-        print("")
-        findData_local.search_and_find_data(nombre_, apellido1_, apellido2_)
+        m = input("Do you want a report? [Y/n]")
+        if m == "y" or m == "Y":
+            graphGenerator_Companies(target)
+        else:
+            print ("|----[END][>] Author's message: 'In times of crisis the intelligent seek solutions and the useless culprits'")
+
+        #findData_local.search_and_find_data(nombre_, apellido1_, apellido2_)
 
     if m == 2:
-        nombre = input("Por favor indique el nombre: ")
-        apellido1 = input("Por favor indique el primer apellido: ")
-        apellido2 = input("Por favor indique el segundo apellido: ")
-        loc = input("Por favor indique la ciudad: ")
+        nombre = input("Insert name: ")
+        apellido1 = input("Insert surname (only one): ")
+        apellido2 = input("Insert second surname: ")
+        loc = input("Insert city: ")
 
         #Buscamos si aparece en la lista de politicos investigados o condenados
         findData_local.search_investigados_condenados_politicosSpain(nombre, apellido1)

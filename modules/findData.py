@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*
-
 import modules.control as control
 import modules.config as config
 import os
@@ -60,3 +57,7 @@ def search_investigados_condenados_politicosSpain(nombre, apellido1):
             print("|--------[DATA][>] " + str(line))
             print("|--------[FUENTE][>] https://es.wikipedia.org/wiki/Anexo:Pol%C3%ADticos_de_Espa%C3%B1a_implicados_en_casos_judiciales")
     f.close()
+
+#*******************************************************************
+#FUNCIONES PARA BUSCADOR DE TELEFONOS
+#*******************************************************************
