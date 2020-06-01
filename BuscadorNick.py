@@ -31,6 +31,9 @@ import requests
 from bs4 import BeautifulSoup
 from validate_email import validate_email
 
+import modules.config as config
+import modules.facebook as facebook
+
 emails = ("@gmail.com", "@yahoo.com", "@hotmail.com", "@hotmail.es", "@outlook.com", "@live.com", "@hushmail.com", "@me.com", "@mail.com", "@protonmail.com", "@facebook.com")
 
 urls={"Facebook":"https://www.facebook.com/data",
@@ -174,79 +177,20 @@ def getnickWebs(nick):
             continue
     return dictWebs
 
-
-def banner():
-    print("""                               -                 
-                                -                 
-                     .-         .o:               
-          .`      .+o-            /s-             
-        `+s/:.  -ss-               -y+:/s+`       
-        ++`   `+y:       `          .y+ `oo       
-       `o    `ss`        +:          -y-  o.      
-       +-    os`         so           oo  -+      
-      `o    -d-          ys           -h` `s      
-      `s`   +y          `ds           `h- `s      
-      `y-   +s          .ds           -h. -s`     
-      -sho` /y.         `hs           os`+hy-     
-      `.hh  .ys`        .hs          /y/ +d-`     
-       -yd-  +hs.  ./ ``+dd-   -   `odo` yh:`     
-       `.hy  `ohh/../-syyddss+-o ./yds. -d+`      
-         :d+  `oydhs/-shhddhy+-:ohdhs. `ys`       OSINT PARA TODOS
-          +h:-``ohdmmmmmmmmmmdddmmhs.`.+y.        
-           /hdhsyhdddmmNNmmmmmmhyyyyshhy.         
-            -/oyhydmmmmmdmmdyyhyyhyyyo/.               Y
-               `.yhddmmdymdhoyddhys`              
-           `.:+sydyhddddhdddhhhdysyo+/.`                   INVESTIGA
-       `.:+o+:.:dmmdmmmmmmmmddmddddd:-+o+-`                     CONMIGO
-     -+oo:.`   +dmmmmdmmmmmmmmssdmhy/  `-/++:`    
-   .+:.`.     `shmmNdo/ymmmmmy/+shsyo     .::/`   
-  :+`         -sydmmhs-/mmhmy+/+sdhso`       -+`  
- .o           /syhmmdy:ommyms//+ymhoo.        -/  
- /-           oyyhmmmh+ommddo++oymyss-         o` 
- ++          `ohhdmmmy+-hddy+//+shhss:         :/ 
- `+:.       :shhyddNmyo:dddh+/++shyyhy+`      `o: 
-   `       :y.:hyydNmdsymmmd++++sdsyo-/y`    `::` 
-          `y/  /yyhmNmhmmmmmho+odyss.  y+         
-          os    /yydmmmmmmmmmyohdyo.   -h-        
-         :h-     -+sdmmmmmddmmyho:`     +s.       
-        :y+        ./shhhyyhhho-`       `ss`      
-        o-`           `...```            .o`      
-       .s                                 :/      
-       .o                                 ::      
-        s`                                o`      
-        .s`                              :/       
-         :s-``                       `..o+        
-           ..                         `-.         
- 
- """)
-    print("-----------------------------------------------------------------------------------------------")
-    print("DANTE'S GATES MINIMAL v 1.0 | <<TIP-1337>> | Buscador De Nicks | QUANTIKA14 | @JORGEWEBSEC")
-    print("     VERSION: 1.0 | 19/02/2019 | INVESTIGA CONMIGO DESDE EL SU | WWW.QUANTIKA14.COM ")
-    print("     VERSION: 1.0.1 | 30/04/2020 | 2TO3")
-
 def main():
-    banner()
-    print("_______________________________________________________________________________________________")
-    print("| El buscador de nicks no es perfecto. Necesita la colaboración de todos para mejorar.        |")
-    print("| Si quieres ayudarnos con Dante's Gates Minimal Version solo tienes que compartir tu idea.   |")
-    print("| Si hay un fallo o mejoras puedes subirlo en issues aquí, gracias.                           |")
-    print("| https://github.com/Quantika14/osint-suite-tools/issues                                      |")
-    print("|_____________________________________________________________________________________________|")
+    #Imprimimos el banner
+    print(config.banner)
 
-    print("")
-    nick = input("Indique el nick que quiere buscar:")
-    print("Este proceso puede tardar varios minutos...")
-    r_nicks = getnickWebs(nick)
-    for n in r_nicks:
-        print("|----[INFO][" + n.upper() + "][>] " + r_nicks.get(n).replace("data", nick))
-    print("|")
-    print("|----[INFO][START] Scanning emails with nicknames...")
-    print("|")
+    nick = input("Insert nick:")
 
+    #Buscamos en Facebook
+    facebook.get_postsFB(nick)
+
+    #Buscamos emails
     for email in emails:
         target = nick + email
         try:
-            is_valid = validate_email(target,verify=True)
+            is_valid = validate_email(target, check_regex=True, check_mx=True, smtp_timeout=10, dns_timeout=10, use_blacklist=True)
             if is_valid:
                 print("|----[INFO][EMAIL][>] " + target)
                 print("|--------[INFO][EMAIL][>] Email validated...")
@@ -261,5 +205,17 @@ def main():
             print("[INFO][TARGET][>] " + target)
             print("|--[INFO][EMAIL] No verification possible... ")
 
+    #Buscamos en las plataformas
+    print("This process may take a few minutes...")
+    r_nicks = getnickWebs(nick)
+
+    for n in r_nicks:
+
+        print("|----[INFO][" + n.upper() + "][>] " + r_nicks.get(n).replace("data", nick))
+
+    print("|")
+    print("|----[INFO][START] Scanning emails with nicks...")
+    print("|")
+    
 if __name__ == "__main__":
     main()

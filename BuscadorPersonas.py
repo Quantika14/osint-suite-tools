@@ -36,6 +36,7 @@ import modules.findData as findData_local
 import modules.config as config
 import modules.graph as graph
 import modules.spainpress as spainpress
+import modules.facebook as facebook
 
 
 #Funciones para buscar en BORME
@@ -261,11 +262,14 @@ def menu():
         target = nombre_ + " " + apellido1_ + " " + apellido2_
         apellidos_ = apellido1_ + " " + apellido2_
         
-        searchWikipedia(target)
-        searchLibreborme(apellidos_, nombre_)
-        searchYoutube(target)
-        search_google_(target)
-        spainpress.search_abc_es(target)
+        #LANZADERA DE FUNCIONES
+        #searchWikipedia(target)
+        #searchLibreborme(apellidos_, nombre_)
+        #searchYoutube(target)
+        #search_google_(target)
+        #spainpress.search_abc_es(target)
+        facebook.get_postsFB(target)
+
 
         m = input("Do you want a report? [Y/n]")
         if m == "y" or m == "Y":
@@ -299,12 +303,16 @@ def menu():
         target = nombre + " " + apellido1 + " " + apellido2
         apellidos = apellido1 + " " + apellido2
         
+        #LANZADERA DE FUNCIONES
         searchWikipedia(target)
         searchLibreborme(apellidos, nombre)
         searchYoutube(target)
         searchPaginasAmarillas(nombre, apellido1, apellido2, loc)
         searchInfojobs(nombre, apellido1, apellido2, loc)
         search_google_(target)
+        spainpress.search_abc_es(target)
+        facebook.get_postsFB(target)
+
         print("")
         print("[--------------------------------------------------]")
         print("")

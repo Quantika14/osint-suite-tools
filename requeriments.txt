@@ -5,8 +5,8 @@ requests
 twint
 random-user-agent
 py3DNS
-validate_email
+py3-validate-email
 mechanize
 datefinder
 networkx
-
+facebook-scraper

@@ -41,6 +41,7 @@ ________________________________________________________________________________
 
 Version: 1.0 | Date: 17/04/2020 | Description: Search engines and add new BuscadorTelefono.py
 Version: 1.1 | Date: 10/05/2020 | Description: parser in URLS and graph report generator
+Version: 1.2 | Date: 01/06/2020 | Description: add facebook search and to correct bugs
 ____________________________________________________________________________________________________
 
 Discleimer: This application allows you to create intelligence through open sources. 
