@@ -5,7 +5,7 @@ import modules.er as er
 
 def parser_email(text):
 
-	r = re.compile(r"(^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$)")
+	r = re.compile(r"[a-z0-9!#$%&'*+-/=?^_`{|}~]{1,64}@[a-zA-Z0-9]{1,255}\.[a-zA-Z0-9-]{1,24}")
 	results = r.findall(text)
 	if results:
 		for x in results:
@@ -16,25 +16,36 @@ def parser_email(text):
 
 def parser_n_tlfn(text):
 
-	#Para buscar dentro de un texto
-	reg0 = re.compile("^\+(?:[0-9]●?){6,14}[0-9]$")
-	#Para buscar con la extension
-	reg1 = re.compile("^\+[0-9]{1,3}\.[0-9]{4,14}(?:x.+)?$")
-	
-	r0 = reg0.findall(text)
-	r1 = reg1.findall(text)
 
-	for x in r0:
-		print("|--------[INFO][PARSER][SPAIN][NUMBER PHONE][>] " + str(x))
-		config.phonesData_list.append(str(x))
+	all_matches_telf = re.compile(r"(?:(?:\+(?:[0]{0,4})?)?34[. -]{0,3})?[6789][0-9]{2}[ ]{0,3}(?:[0-9][ ]?){5}[0-9]")
 	
-	for x in r1:
-		print("|--------[INFO][PARSER][INTERNACIONAL][NUMBER PHONE][>] " + str(x))
-		config.phonesData_list.append(str(x))
+	'''
+		Fuentes para buscar patrones:
+		.............................
+
+		https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s03.html
+		https://zadarma.com/es/tariffs/numbers/latvia/riga/
+		http://www.asifunciona.com/tablas/pref_telefonos/pref_telefonos_1.htm
+		https://en.wikipedia.org/wiki/List_of_mobile_telephone_prefixes_by_country
+	'''
+	international_numbers = re.compile(r"\+(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}")
+
+	results_spain = all_matches_telf.findall(text)
+	results_international = international_numbers.findall(text)
+
+
+	for x in results_spain:
+		print("|--------[INFO][PARSER][SPAIN][NUMBER PHONE][>] " + x)
+		config.phonesData_list.append(x)
+	list(set(config.phonesData_list))
+	
+	for x in results_international:
+		print("|--------[INFO][PARSER][INTERNACIONAL][NUMBER PHONE][>] " + x)
+		#config.phonesData_list.append(x)
 
 def parser_IBAN(text):
 
-	r = re.compile(r"([a-zA-Z]{2})\s*\t*(\d{2})\s*\t*(\d{4})\s*\t*(\d{4})\s*\t*(\d{2})\s*\t*(\d{10})")
+	r = re.compile(r"[a-zA-Z]{2}[0-9]{0,2}[ ]?([0-9]{4}[ ]?){5}")
 	results = r.findall(text)
 	if results:
 		for x in results:

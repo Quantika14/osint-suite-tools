@@ -26,8 +26,9 @@ either expressed or implied, of the FreeBSD Project.
 #AUTHOR: JORGE WEBSEC
 import wikipedia, requests, json, re
 from bs4 import BeautifulSoup
-from search_engines import Bing
+from search_engines import Dogpile
 from search_engines import Google
+from tldextract import extract
 
 import modules.er as er
 import modules.control as control
@@ -37,6 +38,7 @@ import modules.config as config
 import modules.graph as graph
 import modules.spainpress as spainpress
 import modules.facebook as facebook
+import modules.ine_nombreApellidos as INEapellidos
 
 
 #Funciones para buscar en BORME
@@ -173,6 +175,7 @@ def cleanPaginasAmarillas_result(r):
 
     return r
 
+#Funcion para buscar en página amarilla
 def searchPaginasAmarillas(nombre, a1, a2, loc):
     url = "http://blancas.paginasamarillas.es/jsp/resultados.jsp?no=" + nombre + "&ap1=" + a1 + "&ap2=" + a2 + "&sec=41&pgpv=1&tbus=0&nomprov=" + loc + "&idioma=spa"
 
@@ -188,29 +191,34 @@ def searchPaginasAmarillas(nombre, a1, a2, loc):
     else:
         pass
 
-#Funciones para buscar en Infojobs
-def searchInfojobs(nombre, a1, a2, loc):
-    
-    headers = {'User-Agent': "DG Minimal Version"}
-    url_array = ("https://www.infojobs.net/" + nombre.replace(" ", "-") + "-" + a1.replace(" ", "-") + "-" + a2.replace(" ", "-") + ".prf", "https://www.infojobs.net/" + nombre.replace(" ", "-") + "-" + a1.replace(" ", "-") + ".prf", "https://www.infojobs.net/" + nombre.replace(" ", "-") + "-" + a1.replace(" ", "-") + "-1.prf")
-    for url in url_array:
-        html = requests.get(url, headers=headers).text
-        soup = BeautifulSoup(html, "html.parser")
-        h1s = soup.findAll("h1")
-        for h1 in h1s:
-            if "humano" in er.remove_tags(str(h1)):
-                print ()
-                print("|----[INFO][INFOJOBS][>] Captcha detectado...")
-                break
-            else:
-                print()
-                print("|----[INFO][INFOJOBS][>] " + str(h1))
-
+#Funcion para buscar en Google
 def search_google_(target):
     engine = Google()
     results = engine.search("'" + target + "'")
     for r in results:
         print ("|--[INFO][GOOGLE][RESULTS][>] " + r["title"] + " | " + r["text"] + " | " + r["link"])
+        
+        try:
+            tsd, td, tsu = extract(r["link"])
+            domain = td + '.' + tsu
+
+            web = requests.get(r["link"], timeout=3)
+            print ("|----[INFO][WEB][HTTP CODE][>] " + str(web.status_code) + "\n")
+
+            if web.status_code >= 200 or web.status_code < 300:
+
+                if not domain in config.BL_parserPhone:
+                    TEXT = er.remove_tags(str(web.text))
+                    parser.parserMAIN(TEXT)
+
+        except Exception as e:
+            print ("|----[ERROR][HTTP CONNECTION][>] " + str(e))
+
+def search_dogpile_(target):
+    engine = Dogpile()
+    results = engine.search("'" + target + "'")
+    for r in results:
+        print ("|--[INFO][DOGPILE][RESULTS][>] " + r["title"] + " | " + r["text"] + " | " + r["link"])
         
         try:
             web = requests.get(r["link"], timeout=3)
@@ -221,7 +229,6 @@ def search_google_(target):
 
         except Exception as e:
             print ("|----[ERROR][HTTP CONNECTION][>] " + str(e))
-
 
 
 def graphGenerator_Companies(target):
@@ -263,12 +270,15 @@ def menu():
         apellidos_ = apellido1_ + " " + apellido2_
         
         #LANZADERA DE FUNCIONES
-        #searchWikipedia(target)
-        #searchLibreborme(apellidos_, nombre_)
-        #searchYoutube(target)
-        #search_google_(target)
-        #spainpress.search_abc_es(target)
+        INEapellidos.searchApellidos(nombre, apellido1, apellido2)
+        searchWikipedia(target)
+        searchLibreborme(apellidos_, nombre_)
+        searchYoutube(target)
+        search_google_(target)
+        search_dogpile_(target)
+        spainpress.search_abc_es(target)
         facebook.get_postsFB(target)
+        
 
 
         m = input("Do you want a report? [Y/n]")
@@ -304,11 +314,11 @@ def menu():
         apellidos = apellido1 + " " + apellido2
         
         #LANZADERA DE FUNCIONES
+        INEapellidos.searchApellidos(nombre, apellido1, apellido2)
         searchWikipedia(target)
         searchLibreborme(apellidos, nombre)
         searchYoutube(target)
         searchPaginasAmarillas(nombre, apellido1, apellido2, loc)
-        searchInfojobs(nombre, apellido1, apellido2, loc)
         search_google_(target)
         spainpress.search_abc_es(target)
         facebook.get_postsFB(target)

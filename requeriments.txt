@@ -10,3 +10,5 @@ mechanize
 datefinder
 networkx
 facebook-scraper
+matplotlib
+tldextract
