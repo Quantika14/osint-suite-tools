@@ -17,10 +17,19 @@ Repositorio de difentes herramientas (buscadores, crawlers, bots, etc) para hace
   * Buscar en DuckDuckGo para obtener redes sociales y enlaces
   * Buscar en Páginas Amarillas para obtener teléfono, dirección y email
   * Conexión con la API REST de Dante's Gates
+
+* BuscadorNoticiasFalsas.py:
+  * Footprinting de la noticia
+  * Búsqueda automática en Google y DuckDuckGo
+  * Comparación de textos y extración de ratio de plagio
+  * Búsqueda con DDG en plataformas de Fact-checking
+  * Identificación de palabras claves en el texto (Ej: "informe", "estudio", etc)
+
 * BuscadorNick.py:
   * Buscar en más de 90 plataformas
   * Buscar con DuckDuckGo
   * Conexión con la API RED de Dante's Gates
+
 * BuscadorTelefono.py
   * Tweets
   * Check cuenta de Facebook
@@ -28,6 +37,7 @@ Repositorio de difentes herramientas (buscadores, crawlers, bots, etc) para hace
   * Identificación de compañia
   * Localización
   * Buscador de Dogpile
+
 * BuscadorEmails (Email OSINT ripper): link ( https://github.com/Quantika14/email-osint-ripper )
   * Check cuentas en Netflix, LinkedIn, WordPress, Tumblr, Instagram, Spotify, Vimeo, Pinterest, Twitter, Flickr, Myspace, Facebook, etc
   * Análisis de reputación

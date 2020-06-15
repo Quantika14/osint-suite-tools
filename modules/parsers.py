@@ -74,6 +74,16 @@ def parser_DNI(text):
 		for x in results:
 			print ("|--------[INFO][PARSER][DNI][>] " + str(x))
 			config.DNIData_list.append(str(x))
+
+def FC_words_in_text(text):
+
+	for w in config.FC_words_list:
+
+		if w in text.lower():
+
+			print(f"|--------[INFO][PARSER[FACT-CHECKING][WORD][>] Word detected: "{w}"!")
+
+
 def parserMAIN(text):
 
 	parser_EN_DATE(text)

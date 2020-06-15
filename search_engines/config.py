@@ -6,10 +6,10 @@ from sys import version_info
 PYTHON_VERSION = version_info.major
 
 ## Maximum number or pages to search
-SEARCH_ENGINE_RESULTS_PAGES = 3
+SEARCH_ENGINE_RESULTS_PAGES = 2
 
 ## HTTP request timeout 
-TIMEOUT = 10
+TIMEOUT = 3
 
 ## Default User-Agent string 
 USER_AGENT = 'search_engines/0.5 Repo: https://github.com/Quantika14/osint-suite-tools'
