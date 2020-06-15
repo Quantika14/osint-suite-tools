@@ -81,7 +81,7 @@ def FC_words_in_text(text):
 
 		if w in text.lower():
 
-			print(f"|--------[INFO][PARSER[FACT-CHECKING][WORD][>] Word detected: "{w}"!")
+			print(f"|--------[INFO][PARSER[FACT-CHECKING][WORD][>] Word detected: {w}!")
 
 
 def parserMAIN(text):
