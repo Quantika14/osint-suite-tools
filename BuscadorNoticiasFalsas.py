@@ -24,6 +24,7 @@ either expressed or implied, of the FreeBSD Project.
 '''
 from bs4 import BeautifulSoup
 import requests, re, time
+from datetime import datetime
 from search_engines import Google
 from search_engines import Duckduckgo
 from tldextract import extract
@@ -33,6 +34,16 @@ from difflib import SequenceMatcher
 import modules.config as config
 import modules.er as er
 import modules.parsers as parser
+import modules.twitter as Twint
+
+
+def generateLOG(data, title):
+
+    f = open(f"report/report-{title[:10]}", "a")
+
+    f.write(data)
+
+    f.close()
 
 def footprintingWEB_TITLE(HTML):
 
@@ -53,7 +64,8 @@ def compareTEXT(TEXT_0, TEXT):
 
     m = SequenceMatcher(None, TEXT_0, TEXT)
     ratio = m.ratio()
-    print(f"|----[INFO][COMPARE TEXTS][>] Ratio: {ratio}")
+
+    return ratio
 
 #Funcion para buscar en Google
 def search_google_(target, TEXT_0):
@@ -78,7 +90,14 @@ def search_google_(target, TEXT_0):
                         TEXT = er.remove_tags(str(web.text))
                         parser.parserMAIN(TEXT)
                         parser.FC_words_in_text(TEXT)
-                        compareTEXT(TEXT_0, TEXT)
+
+                        ratio = compareTEXT(TEXT_0, TEXT)
+                        print(f"|----[INFO][COMPARE TEXTS][>] Ratio: {ratio}")
+
+                        #Guardamos la info en un log
+                        data = f"{r['title']} ||| {r['link']} ||| {r['text']}, ||| {ratio} \n"
+                        generateLOG(data, target)
+
                     else:
                         pass
             print("")
@@ -110,6 +129,14 @@ def search_DDG_(target, TEXT_0):
                         compareTEXT(TEXT, TEXT_0)
                         parser.FC_words_in_text(TEXT)
                         parser.parserMAIN(TEXT)
+
+                        ratio = compareTEXT(TEXT_0, TEXT)
+                        print(f"|----[INFO][COMPARE TEXTS][>] Ratio: {ratio}")
+                        
+                        #Guardamos la info en un log
+                        data = f"{r['title']} ||| {r['link']} ||| {r['text']}, ||| {ratio} \n"
+                        generateLOG(data, target)
+
                     else:
                         pass
             print("")
@@ -146,6 +173,14 @@ def search_DDG_DORKS(TITLE, TEXT_0):
                             compareTEXT(TEXT, TEXT_0)
                             parser.FC_words_in_text(TEXT)
                             parser.parserMAIN(TEXT)
+
+                            ratio = compareTEXT(TEXT_0, TEXT)
+                            print(f"|----[INFO][COMPARE TEXTS][>] Ratio: {ratio}")
+                        
+                            #Guardamos la info en un log
+                            data = f"{r['title']} ||| {r['link']} ||| {r['text']}, ||| {ratio} \n"
+                            generateLOG(data, target)
+
                         else:
                             pass
                 print("")
@@ -188,15 +223,34 @@ def main():
 
     #Buscamos en Google y DuckDuckGo
     print("|----[INFO][>] Now let's look for other news: \n")
-    search_google_(TITLE, TEXT_0)
-    search_DDG_(TITLE, TEXT_0)
+    
+    m = input("Do you want to search the original web? (Y/n): ")
 
-    m = input("Do you want to analyze in fact-checking platforms?Y/n")
+    if m == "y" or m == "Y":
+        search_google_(TITLE, TEXT_0)
+        search_DDG_(TITLE, TEXT_0)
+    else:
+        pass
+
+    #Buscamos en plataformas de verificación
+    m = input("Do you want to analyze in fact-checking platforms? (Y/n): ")
 
     if m == "y" or m == "Y":
 
         #Buscamos con dorks en DDG
         search_DDG_DORKS(TITLE, TEXT_0)
+
+    else:
+
+        exit
+    
+    #Buscamos en Twitter
+    m = input("Do you want to search in Twitter? (Y/n): ")
+    
+    if m == "y" or m == "Y":
+
+        #Buscamos con dorks en DDG
+        Twint.search_Twitter(url)
 
     else:
 

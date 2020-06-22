@@ -32,6 +32,7 @@ from search_engines import Bing
 
 import modules.config as C
 import modules.er as R
+import modules.twitter as Twint
 
 br = mechanize.Browser()
 br.set_handle_equiv( True ) 
@@ -58,13 +59,6 @@ def check_facebook(phone):
 		print("|--[INFO][FACEBOOK][CHECK][>] The account exist... \n")
 	else:
 		print("|--[INFO][FACEBOOK][CHECK][>] Account doesn't exist... \n")
-
-def search_Twitter(phone):
-
-	print("|--[INFO][TWITTER][>] \n")
-	c = twint.Config()
-	c.Search = phone
-	twint.run.Search(c)
 
 def search_Google(phone):
 	engine = Google()
@@ -115,7 +109,7 @@ def search_Dogpile(phone):
 def attack(phone):
 
 	check_facebook(phone)
-	search_Twitter(phone)
+	Twint.search_Twitter(phone)
 	search_Google(phone)
 	search_Bing(phone)
 	search_Dogpile(phone)
