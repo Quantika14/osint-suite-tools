@@ -1,8 +1,8 @@
 import twint
 
-def search_Twitter(phone):
+def search_Twitter(target):
 
 	print("|--[INFO][TWITTER][>] \n")
 	c = twint.Config()
-	c.Search = phone
+	c.Search = target
 	twint.run.Search(c)

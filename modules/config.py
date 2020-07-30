@@ -58,7 +58,8 @@ Version: 1.1 | Date: 10/05/2020 | Description: parser in URLS and graph report g
 Version: 1.2 | Date: 01/06/2020 | Description: add facebook search and to correct bugs
 Version: 1.2.1 | Date: 04/06/2020 | Description: bug fixes, add INEapellidos and Dogpile in BuscadorPersonas
 Version: 1.3 | Date: 15/06/2020 | Description: add BuscadorNoticiasFalsas.py
-Version:1.4.0 | Date: 22/06/2020 | Description: add generate log and add rtve in fact-checking domain
+Version: 1.4.0 | Date: 22/06/2020 | Description: add generate log and add rtve in fact-checking domain
+Version: 1.4.1 | Date: 30/07/2020 | Description: add downloader pdf in BuscadorPersonas.py
 ____________________________________________________________________________________________________
 
 Discleimer: This application allows you to create intelligence through open sources. 
