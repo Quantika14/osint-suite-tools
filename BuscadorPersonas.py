@@ -24,7 +24,7 @@ either expressed or implied, of the FreeBSD Project.
 '''
 
 #AUTHOR: JORGE WEBSEC
-import wikipedia, requests, json, re
+import wikipedia, requests, json, re, os, wget
 from bs4 import BeautifulSoup
 from search_engines import Dogpile
 from search_engines import Google
@@ -191,6 +191,34 @@ def searchPaginasAmarillas(nombre, a1, a2, loc):
     else:
         pass
 
+def search_google_and_downloadPDF(target):
+
+    print("|--[INFO][>] Now we are going to download the PDF files where the target appears...")
+
+    #Creamos una carpeta con el nombre del target y nos movemos
+    name_dir = target.replace(" ", "-")
+    if os.path.isdir(f"data/{name_dir}"):
+        os.chdir(f"data/{name_dir}")
+    else:
+        os.mkdir(f"data/{name_dir}")
+        os.chdir(f"data/{name_dir}")
+
+    engine = Google()
+    results = engine.search(f"filetype:pdf intext:'{target}' ")
+    for r in results:
+        print ("|--[INFO][GOOGLE][RESULTS][>] " + r["title"])
+        print ("|----[INFO[DESCRIPTION][>] " + r["text"])
+        print ("|----[INFO][LINK][>] " + r["link"])
+
+        try:
+            filename = wget.download(r["link"])
+            print ("|----[INFO][GOOGLE][DOWNLOAD][>] " + filename)
+        except Exception as e:
+            print ("|----[ERROR][>] " + str(e))
+            pass
+    
+    os.chdir(f"../../")
+
 #Funcion para buscar en Google
 def search_google_(target):
     engine = Google()
@@ -274,13 +302,25 @@ def menu():
         searchWikipedia(target)
         searchLibreborme(apellidos_, nombre_)
         searchYoutube(target)
-        search_google_(target)
-        search_dogpile_(target)
         spainpress.search_abc_es(target)
         facebook.get_postsFB(target)
-        
 
+        #Buscadores
+        m = input("Do you want to search with your name in search engines like Google and DogPile? [Y/n]")
+        if m == "y" or m == "Y":
+            search_google_(target)
+            search_dogpile_(target)
+        else:
+            print ("|----[END][>] Author's message: 'Google knows much more information than you think'")
 
+        #Descargamos PDFs
+        m = input("Do you want to download pdf files of the target? [Y/n]")
+        if m == "y" or m == "Y":
+            search_google_and_downloadPDF(target)
+        else:
+            print ("|----[END][>] Author's message: 'PDFs are a mine of information. You miss it'")
+
+        #Creamos grafo
         m = input("Do you want a report? [Y/n]")
         if m == "y" or m == "Y":
             graphGenerator_Companies(target)
@@ -322,6 +362,7 @@ def menu():
         search_google_(target)
         spainpress.search_abc_es(target)
         facebook.get_postsFB(target)
+        search_google_and_downloadPDF(target)
 
         print("")
         print("[--------------------------------------------------]")
