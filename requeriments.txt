@@ -1,4 +1,5 @@
 bs4
+wget
 requests[socks]
 wikipedia
 requests
