@@ -24,7 +24,7 @@ either expressed or implied, of the FreeBSD Project.
 '''
 
 #AUTHOR: JORGE WEBSEC
-import wikipedia, requests, json, re, os, wget
+import wikipedia, wikipediaapi, requests, json, re, os, wget
 from bs4 import BeautifulSoup
 from search_engines import Dogpile
 from search_engines import Google
@@ -40,6 +40,17 @@ import modules.spainpress as spainpress
 import modules.facebook as facebook
 import modules.ine_nombreApellidos as INEapellidos
 
+def get_PersonalData_Wikipedia(target):
+
+    try:
+        wiki_wiki = wikipediaapi.Wikipedia('es')
+        page_py = wiki_wiki.page(target)
+        
+        URL = page_py.canonicalurl
+        HTML = requests.get(URL)
+        parser.extract_personalData_wikipedia(HTML)
+    except:
+        pass
 
 #Funciones para buscar en BORME
 def parserLibreborme_json(j):
@@ -284,6 +295,9 @@ def menu():
         #Buscamos si aparece en la lista de politicos investigados o condenados
         findData_local.search_investigados_condenados_politicosSpain(nombre, apellido1)
 
+        #Target sin filtrar
+        target_no_clean = nombre + " " + apellido1 + " " + apellido2
+
         #Limpiamos de acentos
         nombre_ = er.replace_acentos(nombre)
         apellido1_ = er.replace_acentos(apellido1)
@@ -300,6 +314,7 @@ def menu():
         #LANZADERA DE FUNCIONES
         INEapellidos.searchApellidos(nombre, apellido1, apellido2)
         searchWikipedia(target)
+        get_PersonalData_Wikipedia(target_no_clean)
         searchLibreborme(apellidos_, nombre_)
         searchYoutube(target)
         spainpress.search_abc_es(target)
@@ -335,6 +350,9 @@ def menu():
         apellido2 = input("Insert second surname: ")
         loc = input("Insert city: ")
 
+        #Target sin filtrar
+        target_no_clean = nombre + " " + apellido1 + " " + apellido
+        
         #Buscamos si aparece en la lista de politicos investigados o condenados
         findData_local.search_investigados_condenados_politicosSpain(nombre, apellido1)
 
@@ -355,6 +373,7 @@ def menu():
         
         #LANZADERA DE FUNCIONES
         INEapellidos.searchApellidos(nombre, apellido1, apellido2)
+        get_PersonalData_Wikipedia(target_no_clean)
         searchWikipedia(target)
         searchLibreborme(apellidos, nombre)
         searchYoutube(target)
@@ -370,16 +389,20 @@ def menu():
         findData_local.search_and_find_data(nombre, apellido1, apellido2)
 
     if m == 3:
-        print("[INFO][LISTA DE NOMBRES Y APELLIDOS][>] Por defecto es 'targets.txt'...")
-        print("[INFO][LISTA DE NOMBRES Y APELLIDOS][>] Si quieres cambiar el archivo, puedes hacerlo en modules/config.py")
+        print("[INFO][NAMES AND SECONDS NAMES LIST][>] by default is 'targets.txt'...")
+        print("[INFO][NAMES AND SECONDS NAMES LIST][>] If you want to change it: modules/config.py")
         file_ = open(config.target_list, 'r')
         for target in file_.readlines():
             
-			
+            name_target = target.replace("||", " ").strip()
+            print("|----[TARGET][>] " + name_target)
+            #Buscamos su edad y fallecimiento en Wikipedia
+            get_PersonalData_Wikipedia(name_target)
+
             target_ = target.split("||")
             nombre = target_[0]
             apellido1 = target_[1]
-            print("[TARGET][>] " + nombre + " " + apellido1)
+            
 
             #Buscamos si aparece en la lista de politicos investigados o condenados
             findData_local.search_investigados_condenados_politicosSpain(str(nombre), str(apellido1))

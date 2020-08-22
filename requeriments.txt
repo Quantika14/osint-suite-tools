@@ -2,6 +2,7 @@ bs4
 wget
 requests[socks]
 wikipedia
+wikipedia-api
 requests
 twint
 random-user-agent

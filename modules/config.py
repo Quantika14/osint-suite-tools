@@ -60,6 +60,7 @@ Version: 1.2.1 | Date: 04/06/2020 | Description: bug fixes, add INEapellidos and
 Version: 1.3 | Date: 15/06/2020 | Description: add BuscadorNoticiasFalsas.py
 Version: 1.4.0 | Date: 22/06/2020 | Description: add generate log and add rtve in fact-checking domain
 Version: 1.4.1 | Date: 30/07/2020 | Description: add downloader pdf in BuscadorPersonas.py
+Version: 1.5.0 | Date:22/08/2020 | Description: add personal data parser on Wikipedia in BuscadorPersonas
 ____________________________________________________________________________________________________
 
 Discleimer: This application allows you to create intelligence through open sources. 

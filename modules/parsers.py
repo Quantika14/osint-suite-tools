@@ -1,4 +1,4 @@
-import re
+import re, requests
 from bs4 import BeautifulSoup
 import modules.config as config
 import modules.er as er
@@ -82,6 +82,51 @@ def FC_words_in_text(text):
 		if w in text.lower():
 
 			print(f"|--------[INFO][PARSER[FACT-CHECKING][WORD][>] Word detected: {w}!")
+
+def extract_personalData_wikipedia(html):
+	
+	soup = BeautifulSoup(html.text, "html.parser")
+
+	tables = soup.findAll("tr")
+	for tr in tables:
+		tr_ = er.remove_tags(str(tr))
+		if "Nacimiento" in tr_:
+			print (f"|----[INFO][AGE][>] Age found on Wikipedia {tr_}")
+			
+			#Obtenemos el horoscopo
+			signo = ("capricornio", "acuario", "piscis", "aries", "tauro", "géminis", "cáncer", "leo", "virgo", "libra", "escorpio", "sagitario")
+			meses = {"enero":1, "febrero":2, "marzo":3, "abril":4, "mayo":5, "junio":6, "julio":7, "agosto":8, "septiembre":9, "octubre":10, "noviembre":11, "diciembre":12}
+			fechas = (20, 19, 20, 20, 21, 21, 22, 22, 22, 22, 22, 21)
+			dia = 0
+			mes = 0
+			
+			words = tr_.replace("\n", " ").split(" ")
+
+			for w in words:
+
+				if w.isdigit() and len(w)<=2:
+					dia = int(w)
+				else:
+					pass
+				
+				if w.lower() in meses.keys():
+					mes = meses.get(w.lower())
+				else:
+					pass
+
+			mes=mes-1
+			if dia>fechas[mes]:
+				mes=mes+1
+			if mes==12:
+				mes=0
+				
+			print ("|----[INFO][HOROSCOPO][>] " + signo[mes])
+
+		if "Fallecimiento" in tr_:
+			print (f"|----[INFO][DEATH][>] Death found on Wikipedia {tr_}")
+		
+		if "Partido político" in tr_:
+			print (f"|----[INFO][Political Party][>] {tr_}")
 
 
 def parserMAIN(text):
