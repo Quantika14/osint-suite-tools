@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <title> {{ title }} </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Scripts -->
+  {% for script in scripts %}
+    <script>
+        {{ script }}
+    </script>
+  {% endfor %}
+
+  <!-- Raw Scripts -->
+  {% for script in raw_scripts %}
+    {{ script }}
+  {% endfor %}
+
+  <!-- Resources -->
+  {% for type_resource, url in styles.items() %}
+    <link rel="{{ type_resource }}" href="{{ url }}">
+  {% endfor %}
+
+  <body>
+    <!-- Body itself -->
+    {{ body }}
+  </body>
+
+</html>
