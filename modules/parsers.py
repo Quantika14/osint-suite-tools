@@ -2,6 +2,8 @@ import re, requests
 from bs4 import BeautifulSoup
 import modules.config as config
 import modules.er as er
+import modules.mongo as mongo
+import modules.data as data
 
 def parser_email(text):
 
@@ -52,20 +54,6 @@ def parser_IBAN(text):
 			print ("|--------[INFO][PARSER][IBAN][>] " + str(x))
 		
 
-def parser_EN_DATE(text):
-	date = re.findall(r'([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))', text)
-	if date:
-		for x in date:
-			print ("|--------[INFO][PARSER][DATE][>] " + str(x))
-	date_barra = re.findall(r'^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$', text)
-	if date_barra:
-		for x in date_barra:
-			print ("|--------[INFO][PARSER][DATE][>] " + str(x))
-	date_guion = re.findall(r'\d{4}-\d{2}-\d{2}', text)
-	if date_guion:
-		for x in date_guion:
-			print ("|--------[INFO][PARSER][DATE][>] " + str(x))
-
 def parser_DNI(text):
 	
 	r = re.compile(r"(^[0-9]{8,8}[A-Za-z]$)")
@@ -77,13 +65,19 @@ def parser_DNI(text):
 
 def FC_words_in_text(text):
 
+	for w in config.FC_corruption_keywords:
+
+		if w in text.lower():
+
+			print(f"|--------[INFO][PARSER[CORRUPTION KEYWORD][WORD][>] Word detected: {w}!")
+
 	for w in config.FC_words_list:
 
 		if w in text.lower():
 
 			print(f"|--------[INFO][PARSER[FACT-CHECKING][WORD][>] Word detected: {w}!")
 
-def extract_personalData_wikipedia(html):
+def extract_personalData_wikipedia(html, url, target):
 	
 	soup = BeautifulSoup(html.text, "html.parser")
 
@@ -122,17 +116,55 @@ def extract_personalData_wikipedia(html):
 				
 			print ("|----[INFO][HOROSCOPO][>] " + signo[mes])
 
+			#Save to DB
+			birth = tr_.replace("Age found on Wikipedia Nacimiento", "")
+			mongo.personalData_Wikipedia_insertMongoDB(target, birth, url, 1)
+			mongo.personalData_Wikipedia_insertMongoDB(target, signo[mes], url, 3)
+			data.Wiki_birth = birth
+			data.Wiki_url = url
+			data.WIki_horoscopo = signo[mes]
+
 		if "Fallecimiento" in tr_:
 			print (f"|----[INFO][DEATH][>] Death found on Wikipedia {tr_}")
+
+			#Save to DB
+			mongo.personalData_Wikipedia_insertMongoDB(target, tr_, url, 2)
+			data.Wiki_death = tr_
 		
 		if "Partido político" in tr_:
-			print (f"|----[INFO][Political Party][>] {tr_}")
+			print (f"|----[INFO][POLITICAL PARTY][>] {tr_}")
+
+			#Save to DB
+			mongo.personalData_Wikipedia_insertMongoDB(target, tr_, url, 7)
+			data.Wiki_politicalParty = tr_
+		
+		if "Ocupación" in tr_:
+			print (f"|----[INFO][EMPLOYMENT][>] {tr_}")
+
+			#Save to DB
+			mongo.personalData_Wikipedia_insertMongoDB(target, tr_, url, 4)
+			data.Wiki_employment = tr_.replace("Ocupación", "")
+		
+		if "Religión" in tr_:
+			print (f"|----[INFO][RELIGION][>] {tr_}")
+
+			#Save to DB
+			mongo.personalData_Wikipedia_insertMongoDB(target, tr_, url, 5)
+			data.Wiki_religion = tr_
+		
+		if "Hijos" in tr_:
+			print (f"|----[INFO][SONS][>] {tr_}")
+
+			#Save to DB
+			mongo.personalData_Wikipedia_insertMongoDB(target, tr_, url, 6)
+			data.Wiki_sons = tr_
+		
 
 
 def parserMAIN(text):
 
-	parser_EN_DATE(text)
-	parser_DNI(text)
 	parser_email(text)
+	parser_DNI(text)
 	parser_IBAN(text)
-	parser_n_tlfn(text)
+	#parser_n_tlfn(text)
+	FC_words_in_text(text)

@@ -1,0 +1,6 @@
+Selecciona un número de los anteriores o -1 si no quieres ninguno:
+Ha fallado algo en
+[+] ¿Es esta su noticia?
+Responda S/N:
+[-] No hay noticias con las palabras buscadas en
+Para utilizar el método process_results es necesaria conexión con la base de datos

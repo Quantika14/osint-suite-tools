@@ -1,0 +1,19 @@
+﻿# Módulo de conexión con mongo
+
+pymongo
+
+# Modulo parseo
+
+beautifulsoup4
+
+# Modulo para graficas
+
+matplotlib
+
+# Modulo algoritmos
+
+sklearn
+
+# modulo para nlp
+
+spacy

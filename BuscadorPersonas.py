@@ -1,5 +1,5 @@
 '''
-Copyright (c) 2020, QuantiKa14 Servicios Integrales S.L
+Copyright (c) 2020, QuantiKa14 Servicios Integrales S.L & Jorge Coronado Diaz
 All rights reserved.
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met: 
@@ -29,6 +29,7 @@ from bs4 import BeautifulSoup
 from search_engines import Dogpile
 from search_engines import Google
 from tldextract import extract
+from newspaper import Article
 
 import modules.er as er
 import modules.control as control
@@ -39,6 +40,10 @@ import modules.graph as graph
 import modules.spainpress as spainpress
 import modules.facebook as facebook
 import modules.ine_nombreApellidos as INEapellidos
+import modules.newspaper as newspaper
+import modules.mongo as DB
+import modules.report as report
+import modules.data as data
 
 def get_PersonalData_Wikipedia(target):
 
@@ -46,10 +51,12 @@ def get_PersonalData_Wikipedia(target):
         wiki_wiki = wikipediaapi.Wikipedia('es')
         page_py = wiki_wiki.page(target)
         
-        URL = page_py.canonicalurl
+        URL = page_py.fullurl
         HTML = requests.get(URL)
-        parser.extract_personalData_wikipedia(HTML)
-    except:
+        parser.extract_personalData_wikipedia(HTML, URL, target)
+
+    except Exception as e:
+        print (f"|----[INFO][NO FOUND][>] Test with capital letters and accents.")
         pass
 
 #Funciones para buscar en BORME
@@ -235,20 +242,34 @@ def search_google_(target):
     engine = Google()
     results = engine.search("'" + target + "'")
     for r in results:
-        print ("|--[INFO][GOOGLE][RESULTS][>] " + r["title"] + " | " + r["text"] + " | " + r["link"])
+        print("|")
+        print ("|----[INFO][GOOGLE][RESULTS][>] " + r["title"])
+        print ("|----[INFO][GOOGLE][RESULTS][DESCRIPTION][>] " + r["text"])
+        print ("|----[INFO][GOOGLE][RESULTS][LINK][>] " + r["link"])
         
         try:
             tsd, td, tsu = extract(r["link"])
             domain = td + '.' + tsu
 
-            web = requests.get(r["link"], timeout=3)
-            print ("|----[INFO][WEB][HTTP CODE][>] " + str(web.status_code) + "\n")
+            spain_newspaper = open("data/newspaper/spain-newspaper.txt", "r")
 
-            if web.status_code >= 200 or web.status_code < 300:
+            for news in spain_newspaper:
 
+                if domain == news.strip():
+
+                    newspaper.news_parser(r["link"], target)
+
+            else:
                 if not domain in config.BL_parserPhone:
-                    TEXT = er.remove_tags(str(web.text))
-                    parser.parserMAIN(TEXT)
+
+                    web = requests.get(r["link"], timeout=3)
+
+                    if web.status_code >= 200 or web.status_code < 300:
+
+                        TEXT = er.remove_tags(str(web.text))
+                        parser.parserMAIN(TEXT)
+        
+            print("|")
 
         except Exception as e:
             print ("|----[ERROR][HTTP CONNECTION][>] " + str(e))
@@ -257,23 +278,55 @@ def search_dogpile_(target):
     engine = Dogpile()
     results = engine.search("'" + target + "'")
     for r in results:
-        print ("|--[INFO][DOGPILE][RESULTS][>] " + r["title"] + " | " + r["text"] + " | " + r["link"])
+        print("|")
+        print ("|----[INFO][DOGPILE][RESULTS][>] " + r["title"])
+        print ("|----[INFO][DOGPILE][RESULTS][DESCRIPTION][>] " + r["text"])
+        print ("|----[INFO][DOGPILE][RESULTS][LINK][>] " + r["link"])
         
         try:
-            web = requests.get(r["link"], timeout=3)
-            print ("|----[INFO][WEB][HTTP CODE][>] " + str(web.status_code) + "\n")
-            if web.status_code >= 200 or web.status_code < 300:
-                TEXT = er.remove_tags(str(web.text))
-                parser.parserMAIN(TEXT)
+            tsd, td, tsu = extract(r["link"])
+            domain = td + '.' + tsu
+
+            spain_newspaper = open("data/newspaper/spain-newspaper.txt", "r")
+
+            for news in spain_newspaper:
+
+                if domain == news.strip():
+
+                    newspaper.news_parser(r["link"], target)
+
+            else:
+
+                if not domain in config.BL_parserPhone:
+
+                    web = requests.get(r["link"], timeout=3)
+
+                    if web.status_code >= 200 or web.status_code < 300:
+                        
+                        TEXT = er.remove_tags(str(web.text))
+                        parser.parserMAIN(TEXT)
+        
+            print("|")
 
         except Exception as e:
+            
             print ("|----[ERROR][HTTP CONNECTION][>] " + str(e))
+
+def search_indultoBOE(target):
+
+    print("Indultos")
+
+    DB.find_in_BOE(target)
+
+
 
 
 def graphGenerator_Companies(target):
+
     graph.get_GraphNodePersonalData(target)
 
 def banner():
+
     print(config.banner)
 
 def menu():
@@ -290,10 +343,6 @@ def menu():
         nombre = input("Insert name: ")
         apellido1 = input("Insert surname (only one): ")
         apellido2 = input("Insert second surname: ")
-
-
-        #Buscamos si aparece en la lista de politicos investigados o condenados
-        findData_local.search_investigados_condenados_politicosSpain(nombre, apellido1)
 
         #Target sin filtrar
         target_no_clean = nombre + " " + apellido1 + " " + apellido2
@@ -315,10 +364,14 @@ def menu():
         INEapellidos.searchApellidos(nombre, apellido1, apellido2)
         searchWikipedia(target)
         get_PersonalData_Wikipedia(target_no_clean)
+        search_indultoBOE(target_no_clean)
         searchLibreborme(apellidos_, nombre_)
         searchYoutube(target)
         spainpress.search_abc_es(target)
         facebook.get_postsFB(target)
+
+        #Buscamos si aparece en la lista de politicos investigados o condenados
+        findData_local.search_investigados_condenados_politicosSpain(nombre, apellido1)
 
         #Buscadores
         m = input("Do you want to search with your name in search engines like Google and DogPile? [Y/n]")
@@ -338,7 +391,8 @@ def menu():
         #Creamos grafo
         m = input("Do you want a report? [Y/n]")
         if m == "y" or m == "Y":
-            graphGenerator_Companies(target)
+            #graphGenerator_Companies(target)
+            report.generate_report(target)
         else:
             print ("|----[END][>] Author's message: 'In times of crisis the intelligent seek solutions and the useless culprits'")
 
@@ -351,7 +405,7 @@ def menu():
         loc = input("Insert city: ")
 
         #Target sin filtrar
-        target_no_clean = nombre + " " + apellido1 + " " + apellido
+        target_no_clean = nombre + " " + apellido1 + " " + apellido2
         
         #Buscamos si aparece en la lista de politicos investigados o condenados
         findData_local.search_investigados_condenados_politicosSpain(nombre, apellido1)
@@ -374,6 +428,7 @@ def menu():
         #LANZADERA DE FUNCIONES
         INEapellidos.searchApellidos(nombre, apellido1, apellido2)
         get_PersonalData_Wikipedia(target_no_clean)
+        search_indultoBOE(target_no_clean)
         searchWikipedia(target)
         searchLibreborme(apellidos, nombre)
         searchYoutube(target)
@@ -383,9 +438,6 @@ def menu():
         facebook.get_postsFB(target)
         search_google_and_downloadPDF(target)
 
-        print("")
-        print("[--------------------------------------------------]")
-        print("")
         findData_local.search_and_find_data(nombre, apellido1, apellido2)
 
     if m == 3:
@@ -405,10 +457,13 @@ def menu():
             
 
             #Buscamos si aparece en la lista de politicos investigados o condenados
-            findData_local.search_investigados_condenados_politicosSpain(str(nombre), str(apellido1))
+            #findData_local.search_investigados_condenados_politicosSpain(str(nombre), str(apellido1))
 
             #Buscamos en el BORME
-            searchLibreborme(apellido1, nombre)
+            #searchLibreborme(apellido1, nombre)
+
+            #search_google_(name_target)
+
         file_.close()
 
 def main():
