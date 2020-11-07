@@ -23,7 +23,7 @@ of the authors and should not be interpreted as representing official policies,
 either expressed or implied, of the FreeBSD Project.
 '''
 
-import requests, mechanize, re, twint
+import requests, mechanize, re
 from bs4 import BeautifulSoup
 
 from search_engines import Google
@@ -32,7 +32,6 @@ from search_engines import Bing
 
 import modules.config as C
 import modules.er as R
-import modules.twitter as Twint
 
 br = mechanize.Browser()
 br.set_handle_equiv( True ) 
@@ -109,7 +108,6 @@ def search_Dogpile(phone):
 def attack(phone):
 
 	check_facebook(phone)
-	Twint.search_Twitter(phone)
 	search_Google(phone)
 	search_Bing(phone)
 	search_Dogpile(phone)

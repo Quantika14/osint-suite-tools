@@ -1,5 +1,6 @@
 bs4
 wget
+pymongo
 requests[socks]
 wikipedia
 wikipedia-api
@@ -14,3 +15,4 @@ networkx
 facebook-scraper
 matplotlib
 tldextract
+newspaper

@@ -47,6 +47,7 @@ Repositorio de difentes herramientas (buscadores, crawlers, bots, etc) para hace
 
 1. Para su funcionamiento 100% usar sistemas Linux o Mac
 1. Tener instalado Python 3
+1. Tener MongoDB ````sudo apt-get install mongodb```
 1. Instalar PDFGREP ```sudo apt-get install pdfgrep```
 1. Instalar las dependencias ``` pip3 install -r requeriments.txt```
 1. Para ejecutar cualquier buscador solo tendremos que hacer por ej: ```python3 BuscadorPersonas.py```

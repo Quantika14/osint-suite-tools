@@ -30,9 +30,18 @@ either expressed or implied, of the FreeBSD Project.
 import requests
 from bs4 import BeautifulSoup
 from validate_email import validate_email
+from datetime import datetime
+from datetime import timedelta
+from html_reports.reports import Report
+from search_engines import Google
+from tldextract import extract
 
+import modules.er as er
 import modules.config as config
 import modules.facebook as facebook
+
+#REPORT INSTANCE
+rep = Report()
 
 emails = ("@gmail.com", "@yahoo.com", "@hotmail.com", "@hotmail.es", "@outlook.com", "@live.com", "@hushmail.com", "@me.com", "@mail.com", "@protonmail.com", "@facebook.com")
 
@@ -105,6 +114,7 @@ urls={"Facebook":"https://www.facebook.com/data",
       "HubPages":"https://hubpages.com/@data",
       "Scribd":"https://www.scribd.com/data",
       "Venmo":"https://venmo.com/data",
+      "Strava":"https://strava.com/",
       "Canva":"https://www.canva.com/data",
       "CreativeMarket":"https://creativemarket.com/data",
       "Bandcamp":"https://bandcamp.com/data",
@@ -126,7 +136,8 @@ urls={"Facebook":"https://www.facebook.com/data",
       "Eyeem":"https://www.eyeem.com/u/data",
       "QQ":"http://bbs.map.qq.com/space-username-data.html",
       "Verbling":"https://www.verbling.com/profesores/data",
-      "Pastebin":"http://pastebin.com/u/data"}
+      "Pastebin":"http://pastebin.com/u/data",
+      "Meneame":"https://meneame.net/user/"}
 
 def clean_webs(response, name):
     html = response.text
@@ -157,7 +168,7 @@ def getnickWebs(nick):
     for name,url in urls.items():
         try:
             url=url.replace("data",nick)
-            response=requests.get(url)
+            response=requests.get(url, allow_redirects=False)
             if str(response)[11]!="4" and str(response)[11]=="2":
                 if name == "Pastebin" and response.url != "https://pastebin.com/index":
                     dictWebs[name]=response.url
@@ -177,45 +188,140 @@ def getnickWebs(nick):
             continue
     return dictWebs
 
+#Funcion para buscar en Google
+def search_google_(target):
+    global rep
+
+    engine = Google()
+    results = engine.search("'" + target + "'")
+    for r in results:
+
+        title = r["title"]
+        link = r["text"]
+        text = r["text"]
+
+        print("|")
+        print ("|----[INFO][GOOGLE][RESULTS][>] " + r["title"])
+        print ("|----[INFO][GOOGLE][RESULTS][DESCRIPTION][>] " + r["text"])
+        print ("|----[INFO][GOOGLE][RESULTS][LINK][>] " + r["link"])
+        
+        try:
+            tsd, td, tsu = extract(r["link"])
+            domain = td + '.' + tsu
+
+            spain_newspaper = open("data/newspaper/spain-newspaper.txt", "r")
+
+            for news in spain_newspaper:
+
+                if domain == news.strip():
+
+                    newspaper.news_parser(r["link"], target)
+                    rep.add_markdown(f"[PRENSA]")
+                    rep.add_markdown(f"- Título: {title} | Enlace: {link} | Descripción: {text}")
+
+                if domain in config.BL_parserPhone:
+
+                    rep.add_markdown(f"[REDES SOCIALES]")
+                    rep.add_markdown(f"- Título: {title} | Enlace: {link} | Descripción: {text}")
+
+                if not domain in config.BL_parserPhone:
+                    rep.add_markdown(f"[OTROS]")
+                    rep.add_markdown(f"- Título: {title} | Enlace: {link} | Descripción: {text}")
+        
+            print("|")
+
+        except Exception as e:
+            print ("|----[ERROR][HTTP CONNECTION][>] " + str(e))
+
 def main():
     #Imprimimos el banner
     print(config.banner)
 
     nick = input("Insert nick:")
 
-    #Buscamos en Facebook
-    facebook.get_postsFB(nick)
+    #Creamos el report
+    now = datetime.now()
+
+    rep.add_title(f"INFORME {now}")
+    rep.add_title("BUSCADOR DE NICK", level=2)
+    rep.add_markdown("![alt text](images/DG-minimal-version.png 'Logo DG')")
+    rep.add_markdown("=====================================================")
+    rep.add_markdown(f"- Target: {nick}")
+    rep.add_markdown("=====================================================")
+
+    #Buscamos en facebook
+    m = input("|----[Q][>] Do you want to find a post on Facebook where this nick apperars? Select Yes[Y]/No[n]: ")
+    if m == "y" or m == "Y":
+            
+        facebook.get_postsFB(nick)
+        print("|y")
+    else:
+
+        print("|")
 
     #Buscamos emails
-    for email in emails:
-        target = nick + email
-        try:
-            is_valid = validate_email(target, check_regex=True, check_mx=True, smtp_timeout=10, dns_timeout=10, use_blacklist=True)
-            if is_valid:
-                print("|----[INFO][EMAIL][>] " + target)
-                print("|--------[INFO][EMAIL][>] Email validated...")
-            else:
+    m = input("|----[Q][>] Do you want to search for emails with that NICK in different providers? Select Yes[Y]/No[n]: ")
 
-                print("|----[INFO][TARGET][>] " + target)
-                print("|--------[INFO][EMAIL][>] It's not created...")
+    if m == "y" or m == "Y":
 
-        except Exception as e:
-            
-            print(e)
-            print("[INFO][TARGET][>] " + target)
-            print("|--[INFO][EMAIL] No verification possible... ")
+        rep.add_title("[EMAILS ENCONTRADOS]", level = 3)
+        for email in emails:
+            target = nick + email
+            try:
+                is_valid = validate_email(target, check_regex=True, check_mx=True, smtp_timeout=10, dns_timeout=10, use_blacklist=True)
+                if is_valid:
+                    print("|----[INFO][EMAIL][>] " + target)
+                    print("|--------[INFO][EMAIL][>] Email validated...")
+                    rep.add_markdown(f"- {target}")
+                    
+                else:
+
+                    print("|----[INFO][TARGET][>] " + target)
+                    print("|--------[INFO][EMAIL][>] It's not created...")
+
+            except Exception as e:
+                
+                print(e)
+                print("[INFO][TARGET][>] " + target)
+                print("|--[INFO][EMAIL] No verification possible... ")
+        print("|")
+    else:
+        print("|")
+
 
     #Buscamos en las plataformas
-    print("This process may take a few minutes...")
-    r_nicks = getnickWebs(nick)
+    m = input("|----[Q][>]Do yoy want to search more than 100 platforms if thre is a user with that nickname? Select Yes[Y]/No[n]: ")
 
-    for n in r_nicks:
+    if m == "y" or m == "Y":
 
-        print("|----[INFO][" + n.upper() + "][>] " + r_nicks.get(n).replace("data", nick))
+        #Creamos título en el report
+        rep.add_title("[CUENTAS ENCONTRADAS]", level = 3)
 
-    print("|")
-    print("|----[INFO][START] Scanning emails with nicks...")
-    print("|")
+        print("\n This process may take a few minutes...")
+        r_nicks = getnickWebs(nick)
+
+        for n in r_nicks:
+
+            NICK = r_nicks.get(n).replace("data", nick)
+            print("|----[INFO][" + n.upper() + "][>] " + NICK)
+            rep.add_markdown(f"- {NICK}")
+    else:
+        print("|")
     
+    #Buscamos en Google
+
+    m = input("|----[Q][>] Do you want to Google the nickname and classify the results? Select Yes[Y]/No[n]: ")
+
+    if m == "y" or m == "Y":
+
+        rep.add_title("[Google Hacking & Clustering]", level = 3)
+        search_google_(nick)
+    else:
+        print("|")
+
+    #IMPRIMIMOS EL INFORME
+    print("|----[INFO][REPORT][>] You can now see your PDF report (report.html)...")
+    rep.write_report()
+
 if __name__ == "__main__":
     main()
