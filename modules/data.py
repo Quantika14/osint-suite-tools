@@ -13,3 +13,6 @@ Wiki_employment = ""
 Wiki_religion = ""
 Wiki_politicalParty = ""
 Wiki_sons = ""
+
+#Spain companies
+companiesData_list = []

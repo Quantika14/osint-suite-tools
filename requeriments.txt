@@ -15,4 +15,7 @@ networkx
 facebook-scraper
 matplotlib
 tldextract
-newspaper
+newspaper3k
+pysocks
+texttable
+docopt

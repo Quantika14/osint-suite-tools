@@ -39,6 +39,7 @@ from tldextract import extract
 import modules.er as er
 import modules.config as config
 import modules.facebook as facebook
+import modules.newspaper as newspaper
 
 #REPORT INSTANCE
 rep = Report()
@@ -194,19 +195,24 @@ def search_google_(target):
 
     engine = Google()
     results = engine.search("'" + target + "'")
+
+    RRSS = list()
+    news_ = list()
+    OTROS_ = list()
+
     for r in results:
 
         title = r["title"]
-        link = r["text"]
+        link = r["link"]
         text = r["text"]
 
         print("|")
-        print ("|----[INFO][GOOGLE][RESULTS][>] " + r["title"])
-        print ("|----[INFO][GOOGLE][RESULTS][DESCRIPTION][>] " + r["text"])
-        print ("|----[INFO][GOOGLE][RESULTS][LINK][>] " + r["link"])
+        print (f"|----[INFO][GOOGLE][RESULTS][>] {title}")
+        print (f"|----[INFO][GOOGLE][RESULTS][DESCRIPTION][>] {text}")
+        print (f"|----[INFO][GOOGLE][RESULTS][LINK][>] {link}")
         
         try:
-            tsd, td, tsu = extract(r["link"])
+            tsd, td, tsu = extract(link)
             domain = td + '.' + tsu
 
             spain_newspaper = open("data/newspaper/spain-newspaper.txt", "r")
@@ -215,27 +221,38 @@ def search_google_(target):
 
                 if domain == news.strip():
 
-                    newspaper.news_parser(r["link"], target)
-                    rep.add_markdown(f"[PRENSA]")
-                    rep.add_markdown(f"- Título: {title} | Enlace: {link} | Descripción: {text}")
+                    newspaper.news_parser(link, target)
+                    news_.append(str(link))
 
-                if domain in config.BL_parserPhone:
+            if domain in config.BL_parserPhone:
+                RRSS.append(str(link))
 
-                    rep.add_markdown(f"[REDES SOCIALES]")
-                    rep.add_markdown(f"- Título: {title} | Enlace: {link} | Descripción: {text}")
+            else: 
+                OTROS_.append(str(link))
 
-                if not domain in config.BL_parserPhone:
-                    rep.add_markdown(f"[OTROS]")
-                    rep.add_markdown(f"- Título: {title} | Enlace: {link} | Descripción: {text}")
-        
             print("|")
 
         except Exception as e:
             print ("|----[ERROR][HTTP CONNECTION][>] " + str(e))
+                    
+    rep.add_markdown("[PRENSA]")
+    for new in news_:
+        rep.add_markdown(f"- Enlace: {new}")
+        
+                    
+    rep.add_markdown("[REDES SOCIALES]")
+    for rrss in RRSS:
+        rep.add_markdown(f"- Enlace: {rrss}")
+
+    rep.add_markdown("[OTROS]")
+    for otros in OTROS_:
+        rep.add_markdown(f"- Enlace: {otros}")
+
+ 
 
 def main():
     #Imprimimos el banner
-    print(config.banner)
+    print(config.print_banner())
 
     nick = input("Insert nick:")
 

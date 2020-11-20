@@ -1,4 +1,5 @@
 from pymongo import MongoClient
+from html_reports.reports import Report
 
 #Conexión con la base de datos
 con = MongoClient()
@@ -98,20 +99,20 @@ def personalData_Wikipedia_insertMongoDB(target, data, url, option):
         else:
             db.DG.insert(data)
 
-def companies_insertMongoDB(target, companies):
+def companies_insertMongoDB(target, companies, title, date_from, date_to):
 
-    data = {"target": target, "companies":data}
 
-    x = db.DG.find_one({"url":url})
+    id = target + company + date_from + date_to
+    print (id)
+    data = {"target": target, "companies":company, "title":title, "from":date_from, "date_to": date_to, "id": id}
+
+    x = db.DG_companies.find_one({"id":id})
 
     if x:
-        
-        print(f"|----[DB][>] Found URL in DB -> {url}")
         pass
     else:
-
+        print (f"|----[DB][>] Insert {companies} in DB")
         db.DG.insert(data)
-        print(f"|----[DB][>] Insert INFO in DB-> {url}")
 
 #BUSCADORES
 def find_in_BOE(target):
@@ -125,3 +126,11 @@ def find_in_BOE(target):
             print("|--------[INFO][BOE][SOURCE][>]" + x.get("identificador"))
     else:
         print("|----[INFO][BOE][>] The target has not been found in the BOE. Maybe you need to create or update database 'DG_BOE'... ")
+
+def find_companies(target):
+
+    cursor = db.DG_companies.find({"texto": {"$regex": target, "$options":"i"}})
+    if cursor:
+        for x in cursor:
+            comp = x.get("company")
+            rep.add_markdown(f"- Empresas actuales: {comp}")

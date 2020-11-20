@@ -1,3 +1,9 @@
+from string import ascii_letters, digits
+
+import random
+import time
+
+
 #*****************************************************************************
 # Lista de targets para BuscadorPersonas.py
 # Funcion "main"
@@ -23,6 +29,7 @@ politicosSpain_investigados = "data/Corruptos/list-spain-11-5-2019.txt"
 #*****************************************************************************
 # Black List
 #Archivo BuscadorPersonas.py
+#Archivo BuscadorNick
 
 BL_parserPhone = ["facebook.com", "instagram.com", "youtube.com", "twitter.com", "linkedin.com", "pinterest.com"]
 
@@ -42,44 +49,42 @@ FC_corruption_keywords = ["corrupción", "investigado", "investigada", "imputado
 
 #*****************************************************************************
 # Banner principal
+GREEN, RESET = "\033[92m", "\033[0m"
 
-banner = """
-▓█████▄  ▄▄▄       ███▄    █ ▄▄▄█████▓▓█████   ██████      ▄████  ▄▄▄     ▄▄▄█████▓▓█████   ██████    
-▒██▀ ██▌▒████▄     ██ ▀█   █ ▓  ██▒ ▓▒▓█   ▀ ▒██    ▒     ██▒ ▀█▒▒████▄   ▓  ██▒ ▓▒▓█   ▀ ▒██    ▒    
-░██   █▌▒██  ▀█▄  ▓██  ▀█ ██▒▒ ▓██░ ▒░▒███   ░ ▓██▄      ▒██░▄▄▄░▒██  ▀█▄ ▒ ▓██░ ▒░▒███   ░ ▓██▄      
-░▓█▄   ▌░██▄▄▄▄██ ▓██▒  ▐▌██▒░ ▓██▓ ░ ▒▓█  ▄   ▒   ██▒   ░▓█  ██▓░██▄▄▄▄██░ ▓██▓ ░ ▒▓█  ▄   ▒   ██▒   
-░▒████▓  ▓█   ▓██▒▒██░   ▓██░  ▒██▒ ░ ░▒████▒▒██████▒▒   ░▒▓███▀▒ ▓█   ▓██▒ ▒██▒ ░ ░▒████▒▒██████▒▒   
- ▒▒▓  ▒  ▒▒   ▓▒█░░ ▒░   ▒ ▒   ▒ ░░   ░░ ▒░ ░▒ ▒▓▒ ▒ ░    ░▒   ▒  ▒▒   ▓▒█░ ▒ ░░   ░░ ▒░ ░▒ ▒▓▒ ▒ ░   
- ░ ▒  ▒   ▒   ▒▒ ░░ ░░   ░ ▒░    ░     ░ ░  ░░ ░▒  ░ ░     ░   ░   ▒   ▒▒ ░   ░     ░ ░  ░░ ░▒  ░ ░   
- ░ ░  ░   ░   ▒      ░   ░ ░   ░         ░   ░  ░  ░     ░ ░   ░   ░   ▒    ░         ░   ░  ░  ░     
-   ░          ░  ░         ░             ░  ░      ░           ░       ░  ░           ░  ░      ░     
- ░                                                                                                    
-____________________________________________________________________________________________________
+char = lambda i: " ".join(random.sample(ascii_letters + digits, k=i)).upper()
 
-License: GNU 3.0 | AUTOR: Jorge Coronado | Twitter: @JorgeWebsec | Contact: jorgewebsec[@] gmail.com
-____________________________________________________________________________________________________
+def shuffle(line, name_length):
 
-Version: 1.0 | 17/04/2020 | Description: Search engines and add new BuscadorTelefono.py
-Version: 1.1 | 10/05/2020 | Description: parser in URLS and graph report generator
-Version: 1.2 | 01/06/2020 | Description: add facebook search and to correct bugs
-Version: 1.2.1 | 04/06/2020 | Description: bug fixes, add INEapellidos and Dogpile in BuscadorPersonas
-Version: 1.3 | 15/06/2020 | Description: add BuscadorNoticiasFalsas.py
-Version: 1.4.0 | 22/06/2020 | Description: add generate log and add rtve in fact-checking domain
-Version: 1.4.1 | 30/07/2020 | Description: add downloader pdf in BuscadorPersonas.py
-Version: 1.5.0 | 22/08/2020 | Description: add personal data parser on Wikipedia in BuscadorPersonas
-Version: 1.5.1 | 30/08/2020 | Description: added corruption keyword list 
-____________________________________________________________________________________________________
+    for x in range(0, random.randint(1, 9)):
+        print("\t{}".format(char(name_length)), end="\r")
+        time.sleep(0.4)
 
-Discleimer: This application allows you to create intelligence through open sources. 
-You do not access information that is not public. The author is not responsible for its use.
-____________________________________________________________________________________________________
+    print("\t" + line)
 
-Description: Dante's Gates Minimal Version is an open application with a GNU license for OSINT with
-Spanish and international sources. Currently it is maintained by Jorge Coronado and there are other
-versions such as mobile and APIs for your applications.
-----
-Important: the author of this software is not responsible for it's use. The App aims to help
-researchers in OSINT, not to do evil. For more information contact the author.
+def print_banner(name="Dante's Gates Minimal Version", version="01.06.02", author="Jorge Coronado (aka @JorgeWebsec)"):
 
-"""
+    name_length = len(name) + 4  
+    name = " ".join(name.upper())  
+    name = "{} \033[1m{} \033[0m{}".format(char(2), name, char(2))
 
+    print("\n")
+    lines = [char(name_length), name, char(name_length)]
+    [shuffle(line, name_length) for line in lines]
+    print("\n\t{}".format(author))
+    print("\t{}\n".format(version))
+
+    print("""
+      ____________________________________________________________________________________________________
+
+      Discleimer: This application allows you to create intelligence through open sources. 
+      You do not access information that is not public. The author is not responsible for its use.
+      ____________________________________________________________________________________________________
+
+      Description: Dante's Gates Minimal Version is an open application with a GNU license for OSINT with
+      Spanish and international sources. Currently it is maintained by Jorge Coronado and there are other
+      versions such as mobile and APIs for your applications.
+      ----
+      Important: the author of this software is not responsible for it's use. The App aims to help
+      researchers in OSINT, not to do evil. For more information contact the author.
+
+      """)

@@ -31,13 +31,13 @@ def news_parser(url, target):
     parser.FC_words_in_text(article.text)
     print(f"|--------[INFO][WEB][URL][>] {url}")
 
-    news_insertMongoDB(target, url, article.title, article.authors, article.text, article.publish_date, article.top_image, article.movies, article.html)
+    news_insertMongoDB(target, url, article.title, article.authors, article.text, article.publish_date, article.html)
 
     
 
-def news_insertMongoDB(target, url, title, autor, text, date, top_image, movies, html):
+def news_insertMongoDB(target, url, title, autor, text, date, html):
 
-    data = {"target": target, "url":url, "title":title, "autor":autor, "text":text, "date":date, "top_image":top_image, "movies":movies, "html":html}
+    data = {"target": target, "url":url, "title":title, "autor":autor, "text":text, "date":date, "html":html}
 
     x = db.DG.find_one({"url":url})
 

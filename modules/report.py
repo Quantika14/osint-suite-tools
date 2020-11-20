@@ -3,6 +3,7 @@ from datetime import datetime
 from datetime import timedelta
 
 import modules.data as data
+import modules.mongo as DB
 
 rep = Report()
 
@@ -27,7 +28,7 @@ def generate_report(target):
     rep.add_markdown(f"- Nº de frecuencia del segundo apellido: {data.INE_second_surname}")
  
 
-    rep.add_title("[Información personal.]", level = 3)
+    rep.add_title("[Información personal]", level = 3)
     rep.add_markdown("Información sobre la fuente: www.wikipedia.com")
     rep.add_markdown(f"- URL: {data.Wiki_url}")
     rep.add_markdown(f"- Fecha y lugar de nacimiento: {data.Wiki_birth}")
@@ -38,6 +39,16 @@ def generate_report(target):
     rep.add_markdown(f"- Partido Políticos: {data.Wiki_politicalParty}")
     rep.add_markdown(f"- Horóscopo: {data.Wiki_horoscopo}")
 
+    #Modulo de empresas
+    rep.add_title("[Cargos en empresas]", level = 3)
+
+    DB.find_companies(target)
+
+
+    rep.add_markdown("Información sobre la fuente: librebor.me")
+    for company in data.companiesData_list:
+        rep.add_markdown(f"- Empresas actuales: {company}")
+    #rep.add_markdown(f"- Empresas actuales: {data.companiesHData_list[]}")
 
     rep.add_markdown("![alt text](images/portada-dgreport.png 'Portada')")
     rep.write_report()
