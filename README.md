@@ -10,6 +10,7 @@ Repositorio de difentes herramientas (buscadores, crawlers, bots, etc) para hace
   * Buscar cargos en empresas en el BORME
   * Buscar posibles cargos en empresas de familiares
   * Buscar adjudicaciones de las empresas
+  * CLustering de los links en redes sociales, prensa y otros
   * Buscar en Youtube
   * Buscar en Wikipedia
   * Buscar en Pastebin
@@ -27,6 +28,7 @@ Repositorio de difentes herramientas (buscadores, crawlers, bots, etc) para hace
 
 * BuscadorNick.py:
   * Buscar en más de 90 plataformas
+  * Busca en Google y agrupa los resultados por redes sociales, prensa y otros
   * Buscar con DuckDuckGo
   * Conexión con la API RED de Dante's Gates
 
@@ -41,13 +43,14 @@ Repositorio de difentes herramientas (buscadores, crawlers, bots, etc) para hace
 * BuscadorEmails (Email OSINT ripper): link ( https://github.com/Quantika14/email-osint-ripper )
   * Check cuentas en Netflix, LinkedIn, WordPress, Tumblr, Instagram, Spotify, Vimeo, Pinterest, Twitter, Flickr, Myspace, Facebook, etc
   * Análisis de reputación
-  * Análisis del dominio y medidas de seguridad 
+  * Análisis del dominio y medidas de seguridad
+  * Busca en la Deepweb y Darknet
   
 # ¿Cómo funciona?
 
 1. Para su funcionamiento 100% usar sistemas Linux o Mac
 1. Tener instalado Python 3
-1. Tener MongoDB ````sudo apt-get install mongodb```
+1. Instalar MongoDB ```sudo apt-get install mongodb```
 1. Instalar PDFGREP ```sudo apt-get install pdfgrep```
 1. Instalar las dependencias ``` pip3 install -r requeriments.txt```
 1. Para ejecutar cualquier buscador solo tendremos que hacer por ej: ```python3 BuscadorPersonas.py```
@@ -57,6 +60,7 @@ Repositorio de difentes herramientas (buscadores, crawlers, bots, etc) para hace
 ## Requisitos
 
 1. Tener instalado Python 3
+1. Tener instalado MogoDB
 1. Tener instalado PDFGREP
 1. Tener instalado las librerias descritas en requeriments.txt
 
