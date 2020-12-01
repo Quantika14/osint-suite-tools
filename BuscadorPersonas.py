@@ -184,30 +184,6 @@ def searchYoutube(target):
     for u in videolist:
         print("     - " + u)
 
-#Funciones para buscar en las Páginas Amarillas
-def cleanPaginasAmarillas_result(r):
-    r_array = r.split("Ver mapa")
-
-    r2_array = r_array[0].split("Imprimir Ficha")
-    r = r2_array[2].split()
-
-    return r
-
-#Funcion para buscar en página amarilla
-def searchPaginasAmarillas(nombre, a1, a2, loc):
-    url = "http://blancas.paginasamarillas.es/jsp/resultados.jsp?no=" + nombre + "&ap1=" + a1 + "&ap2=" + a2 + "&sec=41&pgpv=1&tbus=0&nomprov=" + loc + "&idioma=spa"
-
-    html = requests.get(url).text
-
-    soup = BeautifulSoup(html, "html.parser")
-    r = soup.find("div", attrs={'class': 'resul yellad yellad_ad0'})
-    r = er.remove_tags(str(r))
-
-    if not r == "None":
-        print("|----[INFO][PAGINAS AMARILLAS][>] ")
-        print("     - " + str(cleanPaginasAmarillas_result(r)))
-    else:
-        pass
 
 def search_google_and_downloadPDF(target):
 
@@ -239,16 +215,23 @@ def search_google_and_downloadPDF(target):
 
 #Funcion para buscar en Google
 def search_google_(target):
+    global rep
+
     engine = Google()
     results = engine.search("'" + target + "'")
+
+    RRSS = list()
+    news_ = list()
+    OTROS_ = list()
+
     for r in results:
-        print("|")
-        print ("|----[INFO][GOOGLE][RESULTS][>] " + r["title"])
-        print ("|----[INFO][GOOGLE][RESULTS][DESCRIPTION][>] " + r["text"])
-        print ("|----[INFO][GOOGLE][RESULTS][LINK][>] " + r["link"])
-        
+
+        title = r["title"]
+        link = r["link"]
+        text = r["text"]
+      
         try:
-            tsd, td, tsu = extract(r["link"])
+            tsd, td, tsu = extract(link)
             domain = td + '.' + tsu
 
             spain_newspaper = open("data/newspaper/spain-newspaper.txt", "r")
@@ -257,22 +240,31 @@ def search_google_(target):
 
                 if domain == news.strip():
 
-                    newspaper.news_parser(r["link"], target)
+                    newspaper.news_parser(link, target)
+                    news_.append(str(link))
 
-            else:
-                if not domain in config.BL_parserPhone:
+            if domain in config.BL_parserPhone:
+                RRSS.append(str(link))
 
-                    web = requests.get(r["link"], timeout=3)
+            else: 
+                OTROS_.append(str(link))
 
-                    if web.status_code >= 200 or web.status_code < 300:
-
-                        TEXT = er.remove_tags(str(web.text))
-                        parser.parserMAIN(TEXT)
-        
             print("|")
 
         except Exception as e:
             print ("|----[ERROR][HTTP CONNECTION][>] " + str(e))
+                    
+    print("|----[NEWSPAPERS][>] ")
+    for new in news_:
+        print(f"|---- ----> {new}")
+                        
+    print("|----[SOCIAL NETWORKS][>] ")
+    for rrss in RRSS:
+        print(f"|---- ----> {rrss}")
+
+    print("|----[OTHERS][>] ")
+    for otros in OTROS_:
+        print(f"|---- ----> {otros}")
 
 def search_dogpile_(target):
     engine = Dogpile()
@@ -314,12 +306,9 @@ def search_dogpile_(target):
 
 def search_indultoBOE(target):
 
-    print("Indultos")
+    print("|----[INFO][INDULTOS][>] ")
 
     DB.find_in_BOE(target)
-
-
-
 
 def graphGenerator_Companies(target):
 
@@ -327,13 +316,12 @@ def graphGenerator_Companies(target):
 
 def banner():
 
-    print(config.banner)
+    print(config.print_banner())
 
 def menu():
     print("__________________________________________________")
-    print("| 1. Name and surnames                           |")
-    print("| 2. Name, surnames and city                     |")
-    print("| 3. Search names and surnames in list           |")
+    print("| 1. Name, surnames  and DNI                     |")
+    print("| 2. Search names and surnames in list           |")
     print("|________________________________________________|")
     print()
 
@@ -343,6 +331,7 @@ def menu():
         nombre = input("Insert name: ")
         apellido1 = input("Insert surname (only one): ")
         apellido2 = input("Insert second surname: ")
+        DNI = input("Insert DNI: ")
 
         #Target sin filtrar
         target_no_clean = nombre + " " + apellido1 + " " + apellido2
@@ -374,10 +363,19 @@ def menu():
         findData_local.search_investigados_condenados_politicosSpain(nombre, apellido1)
 
         #Buscadores
-        m = input("Do you want to search with your name in search engines like Google and DogPile? [Y/n]")
+        m = input("Do you want to search with your name in search engines like Google? [Y/n]")
         if m == "y" or m == "Y":
             search_google_(target)
+            print(f"|----[INFO][DNI][>] Searching {DNI} in Internet...")
+            search_google_(DNI)
+            
+        else:
+            print ("|----[END][>] Author's message: 'Google knows much more information than you think'")
+
+        m = input("Do you want to search with your name in search engines like Dogpile? [Y/n]")
+        if m == "y" or m == "Y":
             search_dogpile_(target)
+
         else:
             print ("|----[END][>] Author's message: 'Google knows much more information than you think'")
 
@@ -385,6 +383,8 @@ def menu():
         m = input("Do you want to download pdf files of the target? [Y/n]")
         if m == "y" or m == "Y":
             search_google_and_downloadPDF(target)
+            print("|----[INFO][DNI][>] Downloading PDFs with DNI number...")
+            search_google_and_downloadPDF(DNI)
         else:
             print ("|----[END][>] Author's message: 'PDFs are a mine of information. You miss it'")
 
@@ -399,48 +399,6 @@ def menu():
         #findData_local.search_and_find_data(nombre_, apellido1_, apellido2_)
 
     if m == 2:
-        nombre = input("Insert name: ")
-        apellido1 = input("Insert surname (only one): ")
-        apellido2 = input("Insert second surname: ")
-        loc = input("Insert city: ")
-
-        #Target sin filtrar
-        target_no_clean = nombre + " " + apellido1 + " " + apellido2
-        
-        #Buscamos si aparece en la lista de politicos investigados o condenados
-        findData_local.search_investigados_condenados_politicosSpain(nombre, apellido1)
-
-        #Limpiamos de acentos
-        nombre = er.replace_acentos(nombre)
-        apellido1 = er.replace_acentos(apellido1)
-        apellido2 = er.replace_acentos(apellido2)
-        loc = er.replace_acentos(loc)
-
-        #Limpiamos de letras raras
-        nombre = er.replace_letras_raras(nombre)
-        apellido1 = er.replace_letras_raras(apellido1)
-        apellido2 = er.replace_letras_raras(apellido2)
-        loc = er.replace_letras_raras(loc)
-
-        target = nombre + " " + apellido1 + " " + apellido2
-        apellidos = apellido1 + " " + apellido2
-        
-        #LANZADERA DE FUNCIONES
-        INEapellidos.searchApellidos(nombre, apellido1, apellido2)
-        get_PersonalData_Wikipedia(target_no_clean)
-        search_indultoBOE(target_no_clean)
-        searchWikipedia(target)
-        searchLibreborme(apellidos, nombre)
-        searchYoutube(target)
-        searchPaginasAmarillas(nombre, apellido1, apellido2, loc)
-        search_google_(target)
-        spainpress.search_abc_es(target)
-        facebook.get_postsFB(target)
-        search_google_and_downloadPDF(target)
-
-        findData_local.search_and_find_data(nombre, apellido1, apellido2)
-
-    if m == 3:
         print("[INFO][NAMES AND SECONDS NAMES LIST][>] by default is 'targets.txt'...")
         print("[INFO][NAMES AND SECONDS NAMES LIST][>] If you want to change it: modules/config.py")
         file_ = open(config.target_list, 'r')

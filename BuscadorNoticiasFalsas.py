@@ -192,7 +192,7 @@ def search_DDG_DORKS(TITLE, TEXT_0):
 def main():
 
     #Imprimimos el banner principal
-    print(config.banner)
+    print(config.print_banner())
 
     #Insertamos la URL a buscar
     url = input("Insert URL: ")

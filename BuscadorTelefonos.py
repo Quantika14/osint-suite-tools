@@ -113,7 +113,7 @@ def attack(phone):
 	search_Dogpile(phone)
 
 def main():
-	print(C.banner)
+	print(C.print_banner())
 
 	target = input("Insert number phone: ")
 	

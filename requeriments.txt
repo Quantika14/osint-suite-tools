@@ -19,3 +19,4 @@ newspaper3k
 pysocks
 texttable
 docopt
+html-reports

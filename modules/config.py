@@ -3,6 +3,17 @@ from string import ascii_letters, digits
 import random
 import time
 
+#******************************************************************************
+# Colores para EO-ripper / BuscadorEmails.py
+class colores:
+    header = '\033[95m'
+    blue = '\033[94m'
+    green = '\033[92m'
+    alert = '\033[93m'
+    fail = '\033[91m'
+    normal = '\033[0m'
+    bold = '\033[1m'
+    underline = '\033[4m'
 
 #*****************************************************************************
 # Lista de targets para BuscadorPersonas.py
