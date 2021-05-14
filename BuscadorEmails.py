@@ -95,13 +95,13 @@ def check_Facebook(email):
 	br.open(url)
 	br.select_form(nr = 0) 
 	response = br.submit()
-	print (response.geturl())
+	#print (response.geturl())
 
 	br.select_form(nr = 0)       #This is login-password form -> nr = number = 0
 	br.form['email'] = email
 	br.form['pass'] = "123456"
 	response = br.submit()
-	print (response.geturl())
+	#print (response.geturl())
 	html =  br.response().read()
 	soup = BeautifulSoup(html, "html.parser")
 	divError = soup.findAll("div", {"id": "login_error"})
@@ -111,7 +111,7 @@ def check_Facebook(email):
 		print("|--[INFO][Facebook][CHECK][>] Account doesn't exist...")
 
 	else:
-		print(C.colores.alert + "|--[INFO][Facebook][CHECK][>] The account exist..." + C.colores.normal)
+		print(C.colores.green + "|--[INFO][Facebook][CHECK][>] The account exist..." + C.colores.normal)
 
 
 def check_AccountTwitter(email):
@@ -145,7 +145,7 @@ def check_netflix(email):
 		else:
 			print("|--[INFO][NETFLIX][ES][CHECK][>] The account exist...")
 	except:
-		print(C.colores.alert + "|--[ERROR][Check_Netflix][>] Netflix error..." + C.colores.normal)
+		print(C.colores.green + "|--[ERROR][Check_Netflix][>] Netflix error..." + C.colores.normal)
 
 def check_haveibeenpwned(email):
 	url = "https://haveibeenpwned.com/account/" + email
@@ -183,10 +183,11 @@ def check_emailrep(email):
 		print("|--[INFO][PROFILES IN SOCIAL NETWORKS][>] Analyzing...")
 		for profile in JSON["details"]["profiles"]:
 
-			print("|------[INFO][SOCIAL NETWORK][>] " + profile)
+			print(C.colores.green + "|------[INFO][SOCIAL NETWORK][>] " + profile + C.colores.normal)
 
 		if JSON["details"]["credentials_leaked"]:
 			C.count_leaked += 1
+			print(C.colores.Alert + "|----[INFO][Leaked][>] True ---> If you want the password ... You know what to do " + C.colores.normal)
 		if "Spotify" in JSON["details"]["profiles"]:
 			C.count_spotify += 1
 	
