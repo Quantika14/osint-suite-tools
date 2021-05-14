@@ -1,3 +1,5 @@
+pydns
+validate_email
 bs4
 wget
 pymongo
