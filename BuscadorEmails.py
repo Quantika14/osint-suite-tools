@@ -43,6 +43,7 @@ br.set_handle_robots( False )
 br.set_handle_refresh( mechanize._http.HTTPRefreshProcessor(), max_time = 1 ) 
 br.addheaders = [ ( 'User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1' ) ] 
 
+
 def checkEmails_(email):
 
 	username = email.split("@")
@@ -88,6 +89,30 @@ def check_wordpress(email):
 			print("|--[INFO][WordPress][CHECK][>] Account doesn't exist...")
 	except:
 		print(C.colores.alert + "|--[WARNING][LinkedIn][>] Error..." + C.colores.normal)
+
+def check_Facebook(email):
+	url = 'https://mbasic.facebook.com/'
+	br.open(url)
+	br.select_form(nr = 0) 
+	response = br.submit()
+	print (response.geturl())
+
+	br.select_form(nr = 0)       #This is login-password form -> nr = number = 0
+	br.form['email'] = email
+	br.form['pass'] = "123456"
+	response = br.submit()
+	print (response.geturl())
+	html =  br.response().read()
+	soup = BeautifulSoup(html, "html.parser")
+	divError = soup.findAll("div", {"id": "login_error"})
+	div = R.remove_tags(str(divError))
+	if "no coincide" in div or "do not match" in div:
+
+		print("|--[INFO][Facebook][CHECK][>] Account doesn't exist...")
+
+	else:
+		print(C.colores.alert + "|--[INFO][Facebook][CHECK][>] The account exist..." + C.colores.normal)
+
 
 def check_AccountTwitter(email):
 	username = get_usernameEmail(email)
@@ -254,6 +279,7 @@ def attack(email):
 
 		check_emailrep(email)
 		check_AccountTwitter(email)
+		check_Facebook(email)
 		check_wordpress(email)
 		check_netflix(email)
 		check_haveibeenpwned(email)
