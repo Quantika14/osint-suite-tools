@@ -49,7 +49,7 @@ def search_investigados_condenados_politicosSpain(nombre, apellido1):
 
 
     #Buscamos si aparece en la lista de corruptos politicos
-    f = open(config.politicosSpain_investigados, "r")
+    f = open(config.politicosSpain_investigados, "r", errors='ignore')
     for line in f.readlines():
 
         if nombre.lower() in line.lower() and apellido1.lower() in line.lower():
